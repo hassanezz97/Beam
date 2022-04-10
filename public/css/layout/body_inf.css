@@ -1,0 +1,78 @@
+
+.wrapper{
+
+    background-color: #FEF5E2;
+}
+.body-intro{
+
+}
+.body-title{
+    text-align: center;
+    color: #80ACDC;
+    font-size: 60px;
+    font-family: Georgia;
+}
+
+.body-desc{
+    text-align: center;
+    color: #80ACDC;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 19px;
+}
+
+.btn-intro{
+    text-align: center;
+
+}
+
+.btn-intro a{
+    color: white !important;
+    background-color: #80ACDC;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 15px;
+    width: 200px;
+}
+
+.btn-intro a:hover{
+    background-color: #3c729f !important;
+    color: #ffffff !important;
+}
+.btn-intro-bus{
+    text-align: center;
+}
+
+.body-desc-bus{
+    text-align: center;
+    color: #80ACDC;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+}
+
+.learn-more{
+    color: #100e72;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+}
+
+.text-center.pt-5.mb-3.mt-5{
+
+    width: 100%;
+
+}
+.text-center.pt-5.mb-3.mt-5 {
+    color: #80ACDC;
+}
+
+p.make-money{
+    color: #80ACDC;
+}
+p.make-money:hover{
+    color: blue;
+}
+
+#exampleModal{
+
+}
+#exampleModalLabel{
+
+}
