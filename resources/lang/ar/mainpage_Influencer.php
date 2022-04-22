@@ -4,5 +4,6 @@ return [
 
 
     'title' => 'Influencer',
-    'notifications' => 'Notifications',
+    'notifications' => 'الاشعارات',
+
 ];

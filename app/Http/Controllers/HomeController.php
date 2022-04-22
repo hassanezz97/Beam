@@ -49,5 +49,10 @@ class HomeController extends Controller
         return view('businesses.profile-business');
     }
 
+    public function verification()
+    {
+        return view('login.email-verification');
+    }
+
 
 }

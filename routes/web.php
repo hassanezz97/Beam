@@ -13,23 +13,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-//////////////////////////// Home pages ///////////////////////////
-Route::get('/', 'HomeController@index')->name('influencer');
-Route::get('/businesses', 'HomeController@visitBusiness')->name('businesses');
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+    ], function(){
+        //////////////////////////// Home pages ///////////////////////////
+            Route::get('/', 'HomeController@index')->name('influencer');
+            Route::get('/businesses', 'HomeController@visitBusiness')->name('businesses');
 
-//////////////////// Influencers ////////////////////////////////////
-Route::get('/influencer/home', 'HomeController@visitInfluencersHome')->name('home');
-Route::get('/influencer/profile', 'HomeController@setupProfile')->name('profile');
+        //////////////////// Influencers ////////////////////////////////////
+            Route::get('/influencer/home', 'HomeController@visitInfluencersHome')->name('home');
+            Route::get('/influencer/profile', 'HomeController@setupProfile')->name('profile');
 
-//////////////////// Business /////////////////////////////////////////
-Route::get('/business/home', 'HomeController@visitBusinessHome')->name('home-bus');
-Route::get('/business/profile', 'HomeController@setupBusinessProfile')->name('profile-bus');
+        //////////////////// Business /////////////////////////////////////////
+            Route::get('/business/home', 'HomeController@visitBusinessHome')->name('home-bus');
+            Route::get('/business/profile', 'HomeController@setupBusinessProfile')->name('profile-bus');
 
-//////////////////////// Search //////////////////////////////////
-Route::get('/influencer/advanced-search', 'HomeController@advancedSearch')->name('advSearch');
-Route::get('/influencer/search-influencer', 'HomeController@searchInfluencer')->name('searchInfluencer');
-Route::get('/influencer/search-business', 'HomeController@searchBusiness')->name('searchBusiness');
-Route::get('/influencer/search-username', 'HomeController@searchUsername')->name('searchUsername');
+        //////////////////////// Search //////////////////////////////////
+            Route::get('/influencer/advanced-search', 'HomeController@advancedSearch')->name('advSearch');
+            Route::get('/influencer/search-influencer', 'HomeController@searchInfluencer')->name('searchInfluencer');
+            Route::get('/influencer/search-business', 'HomeController@searchBusiness')->name('searchBusiness');
+            Route::get('/influencer/search-username', 'HomeController@searchUsername')->name('searchUsername');
+
+
+});
+
+
+Route::get('/influencer/email-verification', 'HomeController@verification')->name('verification');

@@ -102,7 +102,30 @@ header start-->
                             </div>
                         </div>
                     </li>
+                    <li>
+                        <a href="#" title="">
+                            @if (App::getLocale() == 'ar')
+                                <span><img src="{{ URL::asset('assets/images/icons/LB.png') }}" alt=""></span>
+                                {{ LaravelLocalization::getCurrentLocaleName() }}
+                            @else
+                                <span><img src="{{ URL::asset('assets/images/icons/US.png') }}" alt=""></span>
+                                {{ LaravelLocalization::getCurrentLocaleName() }}
+                            @endif
+
+                        </a>
+
+                        <ul>
+                            @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                <li>
+                                    <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                        {{ $properties['native'] }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </li>
                 </ul>
+
             </nav>
             <div class="menu-btn">
                 <a href="#" title=""><i class="fa fa-bars"></i></a>

@@ -126,7 +126,7 @@
                                     <img src="https://img.icons8.com/external-xnimrodx-lineal-gradient-xnimrodx/64/4a90e2/external-eye-notification-alert-xnimrodx-lineal-gradient-xnimrodx.png"/>
                                 </div>
                                 <div class="post-st">
-                                   <h1 style="font-size: 35px">Notifications</h1>
+                                   <h1 style="font-size: 35px">{{trans('mainpage_Influencer.notifications')}}</h1>
                                 </div>
                             </div>
                             {{-- Show notifications here--}}
