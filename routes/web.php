@@ -19,7 +19,7 @@ Route::group(
         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
     ], function(){
         //////////////////////////// Home pages ///////////////////////////
-            Route::get('/', 'HomeController@index')->name('influencer');
+            Route::get('/home-inf', 'HomeController@home')->name('influencer');
             Route::get('/businesses', 'HomeController@visitBusiness')->name('businesses');
 
         //////////////////// Influencers ////////////////////////////////////
@@ -41,3 +41,14 @@ Route::group(
 
 
 Route::get('/influencer/email-verification', 'HomeController@verification')->name('verification');
+
+Auth::routes();
+
+Route::group(['middleware'=>['guest']], function (){
+    Route::get('/', function()
+    {
+        return view('home_page.influencer');
+//        return view('auth.login');
+    });
+});
+Route::get('/home', 'HomeController@index')->name('home');

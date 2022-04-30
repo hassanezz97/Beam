@@ -1,3 +1,13 @@
+
+body {
+/*background-color: #FEF5E2;*/
+    overflow-y: hidden;
+
+}
+body.modal-open {
+     height: 100vh;
+     overflow-y: hidden;
+ }
 .nav {
     display: flex;
     flex-wrap: wrap;
@@ -87,5 +97,79 @@
     .collapse{
         margin-left: 0;
     }
+    .reg-div .navbar-nav.flex-row.align-items-center{
+        margin-left: 135px;
+
+    }
 }
 
+
+.reg-div{
+    display: unset;
+    margin-left: 435px;
+}
+
+.btn-register a{
+    color: #060450 !important;
+    background-color: #FEF5E2;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 12px;
+    width: 100px;
+
+}
+
+.btn-register a:hover{
+    background-color: #3c729f !important;
+    color: #ffffff !important;
+}
+
+div ul li {
+    display: inline-block;
+    text-align: center;
+    padding: 3px 13px;
+    position: relative;
+}
+
+div ul li span {
+    display: block;
+    height: 14px;
+
+}
+div ul li a {
+    color: #FEF4E2 !important;
+    font-size: 14px;
+
+}
+div ul li a p{
+    margin-top: 8px;
+
+}
+div ul li span img {
+    float: none;
+}
+div ul ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 150px;
+    background-color: #98D5CD;
+    text-align: left;
+    padding: 25px 0 10px 0;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 999999;
+}
+div ul ul li {
+    padding: 0;
+    float: left;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 15px;
+    padding: 0 20px;
+
+}
+div ul li:hover > ul {
+    opacity: 1;
+    visibility: visible;
+    z-index: 9999;
+}

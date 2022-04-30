@@ -20,8 +20,37 @@ header start-->
         <nav class="nav nav-pills nav-fill  d-md-flex">
                 <a class="nav-link {{ (request()->is(app()->getLocale())) ? 'active' : '' }}" href="{{route('influencer')}}" >Influencers </a>
                 <a class="nav-link {{ (request()->segment(2) ==  'businesses') ? 'active' : '' }}" href="{{route('businesses')}}" >Businesses</a>
-
         </nav>
+
+        </div>
+        <div class="reg-div">
+            <ul class="navbar-nav flex-row align-items-center">
+                <li>
+                    <a href="#" title="">
+                        @if (App::getLocale() == 'ar')
+                            <span><img src="{{ URL::asset('assets/images/icons/LB.png') }}" alt=""></span>
+                           <p> {{ LaravelLocalization::getCurrentLocaleName() }} </p>
+                        @else
+                            <span><img src="{{ URL::asset('assets/images/icons/US.png') }}" alt=""></span>
+                            <p>{{ LaravelLocalization::getCurrentLocaleName() }}</p>
+                        @endif
+
+                    </a>
+
+                    <ul>
+                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                            <li>
+                                <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                    {{ $properties['native'] }}
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </li>
+             <li class="btn-register">
+                     <a type="button" class="w3-button w3-round-large " data-toggle="modal" data-target="#exampleModal" >Sign Up</a>
+             </li>
+            </ul>
 
         </div>
 

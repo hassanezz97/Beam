@@ -7,11 +7,13 @@
   -webkit-box-shadow: none;
   box-shadow: none;
   border: 1px solid rgba(0, 0, 0, 0.1); }
-  .form-control:focus, .form-control:active {
+
+.form-control:focus, .form-control:active {
     outline: none !important;
     -webkit-box-shadow: none;
     box-shadow: none;
-    border: 1px solid #80ACDC; }
+    border: 1px solid #80ACDC;
+  }
 
 textarea.form-control {
   height: inherit !important; }

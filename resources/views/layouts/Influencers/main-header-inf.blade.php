@@ -20,27 +20,27 @@ header start-->
                     <li>
                         <a href="#" title="">
                             <span><img src="{{ URL::asset('assets/images/icons/icon1.png') }}" alt=""></span>
-                            Home
+                            {{trans('mainpage_Influencer.home')}}
                         </a>
                     </li>
                     <li>
                         <a href="#" title="">
                             <span><img src="https://img.icons8.com/fluency-systems-filled/48/ffffff/advanced-search.png" width="18" height="18"/></span>
-                            Advanced Search
+                            {{trans('mainpage_Influencer.advanced-search')}}
                         </a>
 
                     </li>
                     <li>
                         <a href="#" title="">
                             <span><img src="{{ URL::asset('assets/images/icons/icon10.png') }}" width="18" height="14" alt=""></span>
-                            Collaborations
+                            {{trans('mainpage_Influencer.collaborations')}}
                         </a>
                     </li>
 
                     <li>
                         <a href="#" title="">
                             <span><img src="{{ URL::asset('assets/images/icons/icon4.png') }}" alt=""></span>
-                            Profile
+                            {{trans('mainpage_Influencer.profile')}}
                         </a>
                         <ul>
                             <li><a href="user-profile.html" title="">Edit Your Profile</a></li>
@@ -52,7 +52,7 @@ header start-->
                     <li>
                         <a href="#" title="" class="not-box-open">
                             <span><img src="{{ URL::asset('assets/images/icons/icon7.png') }}" alt=""></span>
-                            Notification
+                            {{trans('mainpage_Influencer.notifications')}}
                         </a>
                         <div class="notification-box noti" id="notification">
                             <div class="nt-title">
@@ -137,14 +137,20 @@ header start-->
                     <i class="fa fa-arrow-down"></i>
                 </div>
                 <div class="user-account-settingss" id="users">
-                    <h3>Setting</h3>
+                    <h3>{{trans('mainpage_Influencer.settings')}}</h3>
                     <ul class="us-links">
-                        <li><a href="profile-account-setting.html" title="">Account Setting</a></li>
+                        <li><a href="profile-account-setting.html" title="">{{trans('mainpage_Influencer.account-setting')}}</a></li>
                         <li><a href="#" title="">Privacy</a></li>
                         <li><a href="#" title="">Faqs</a></li>
                         <li><a href="#" title="">Terms & Conditions</a></li>
                     </ul>
-                    <h3 class="tc"><a href="sign-in.html" title="">Logout</a></h3>
+                    <h3 class="tc"><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();"
+                                      title="">{{trans('mainpage_Influencer.logout')}}</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </h3>
                 </div>
             </div>
         </div>

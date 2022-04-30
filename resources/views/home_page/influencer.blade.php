@@ -20,7 +20,7 @@
 
 
 @include('layouts.main-header')
-
+<div class="page-container">
 
 <!--=================================
  Main content -->
@@ -37,9 +37,9 @@
         <br>
         <h6 class="body-desc">
             <b>
-                Join the first professional network designed for influencers in the Arab world. Create your<br>
-                <span> profile today to make money, learn from one another, and meet people through</span><br>
-                communities.
+                {{trans('homepage-inf.body-desc1')}}<br>
+                <span> {{trans('homepage-inf.body-desc2')}}</span><br>
+                {{trans('homepage-inf.body-desc3')}}
             </b>
 
         </h6>
@@ -65,7 +65,7 @@
 
 
 </div>
-@include('layouts.login-modal')
+@include('auth.login-modal')
 
 <!--=================================
     End of Main content -->
@@ -81,7 +81,7 @@ end of footer -->
 
 @include('layouts.footer-scripts')
 
-
+</div>
 </body>
 
 </html>

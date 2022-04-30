@@ -13,7 +13,7 @@
 
 <body>
 
-<div class="wrapper" style="font-family: 'Cairo', sans-serif">
+<div class="wrapper" style="font-family: 'Cairo', sans-serif; ">
 
     <!--=================================
 preloader -->
