@@ -22,6 +22,10 @@ Route::group(
             Route::get('/home-inf', 'HomeController@home')->name('influencer');
             Route::get('/businesses', 'HomeController@visitBusiness')->name('businesses');
 
+        //////////////////////////// Registration ///////////////////////////
+        Route::get('/registration-inf', 'HomeController@registerInfluencer')->name('reg-influencer');
+
+
         //////////////////// Influencers ////////////////////////////////////
             Route::get('/influencer/home', 'HomeController@visitInfluencersHome')->name('home');
             Route::get('/influencer/profile', 'HomeController@setupProfile')->name('profile');
@@ -40,7 +44,7 @@ Route::group(
 });
 
 
-Route::get('/influencer/email-verification', 'HomeController@verification')->name('verification');
+//Route::get('/influencer/email-verification', 'HomeController@verification')->name('verification');
 
 Auth::routes();
 

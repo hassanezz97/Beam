@@ -30,6 +30,10 @@ class HomeController extends Controller
     {
         return view('home_page.influencer');
     }
+    public function registerInfluencer()
+    {
+        return view('auth.register-influencer');
+    }
 
     public function visitBusiness()
     {

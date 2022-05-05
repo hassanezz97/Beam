@@ -1,0 +1,44 @@
+.navbar{
+    background-color: #339DAA ;
+}
+
+.btn-outline-success {
+    background: transparent;
+    border-color: #FED046 !important;
+    color: #FED046 !important;
+}
+
+.navbar-toggler{
+    border-color: #FED046 !important;
+}
+.navbar-toggler-icon{
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(254,208,70)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+}
+
+
+/*---- Form Buttons ----*/
+.bs-stepper .step.active .bs-stepper-circle {
+    background-color: #339DAA !important;
+    box-shadow: 0 0.1875rem 0.375rem 0 #1d5a62 !important;
+    color: #fff;
+}
+
+.btn-primary {
+    background-color: #339DAA!important;
+    border-color: #339DAA !important;
+    box-shadow: 0 0.125rem 0.25rem 0 rgb(51 157 170 / 40%) !important;
+    color: #fff;
+}
+.bs-stepper .step.crossed+.line i {
+    color:  #339DAA!important;
+}
+.bs-stepper .step.crossed .step-trigger .bs-stepper-circle {
+    background-color: rgb(51 157 170 / 40%)!important;
+    color: #339DAA!important;
+}
+.form-control:focus, .form-select:focus {
+    border-color: #339DAA;
+}
+.bs-stepper .step.active .bs-stepper-label .head.label{
+    color: #339DAA!important;
+}

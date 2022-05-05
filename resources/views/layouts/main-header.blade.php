@@ -18,7 +18,7 @@ header start-->
         <div class="d-flex justify-content-center">
 
         <nav class="nav nav-pills nav-fill  d-md-flex">
-                <a class="nav-link {{ (request()->is(app()->getLocale())) ? 'active' : '' }}" href="{{route('influencer')}}" >Influencers </a>
+                <a class="nav-link {{ (request()->segment(1) == '') ? 'active' : '' }}" href="{{route('influencer')}}" >Influencers </a>
                 <a class="nav-link {{ (request()->segment(2) ==  'businesses') ? 'active' : '' }}" href="{{route('businesses')}}" >Businesses</a>
         </nav>
 
