@@ -12,10 +12,6 @@
     <title>Empowering the influencer generation - influence.co</title>
     <link rel="shortcut icon" href="/favicon2.png">
 
-
-
-
-
     <link rel="stylesheet" media="all" href="/assets/application-136cfbacdab953b7e3f528f0d29e66a3bd757079d694b1e891cfb0636c66c063.css" />
     <link rel="stylesheet" media="screen" href="/packs/css/application-e37ac8fe.css" />
 

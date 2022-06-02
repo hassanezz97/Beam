@@ -1,12 +1,12 @@
 /*-------------------------------------Header Style ----------------------------------*/
 .navbar{
-    background-color: #339DAA ;
+    background-color: #F27684;
 }
 
 .btn-outline-success {
     background: transparent;
-    border-color: #FED046 !important;
-    color: #FED046 !important;
+    border-color: #C9CBDA !important;
+    color: #C9CBDA !important;
 }
 
 .navbar-toggler{
@@ -23,33 +23,34 @@
     display: none !important;
 }
 .bs-stepper .step.active .bs-stepper-circle {
-    background-color: #339DAA !important;
-    box-shadow: 0 0.1875rem 0.375rem 0 #1d5a62 !important;
+    background-color: #F27684 !important;
+    box-shadow: 0 0.1875rem 0.375rem 0 #cc9097 !important;
     color: #fff ;
 }
 
 .btn-primary {
-    background-color: #339DAA!important;
-    border-color: #339DAA !important;
-    box-shadow: 0 0.125rem 0.25rem 0 rgb(51 157 170 / 40%) !important;
+    background-color: #F27684 !important;
+    border-color: #F27684 !important;
+    box-shadow: 0 0.125rem 0.25rem 0 rgb(204 144 151 / 40%) !important;
     color: #fff;
+
 }
 .bs-stepper .step.crossed+.line i {
-    color:  #339DAA!important;
+    color:  #F27684 !important;
 }
 .bs-stepper .step.crossed .step-trigger .bs-stepper-circle {
-    background-color: rgb(51 157 170 / 40%)!important;
-    color: #339DAA!important;
+    background-color: rgb(204 144 151 / 40%)!important;
+    color: #F27684 !important;
 }
 .form-control:focus, .form-select:focus {
-    border-color: #339DAA;
+    border-color: #F27684 ;
 }
 .bs-stepper .step.active .bs-stepper-label .head.label{
-    color: #339DAA!important;
+    color: #F27684!important;
 }
 /*----------------------------------- End Form Style -----------------------------------------*/
 .avatar-button{
-background-color: #339DAA !important;
+background-color: #F27684 !important;
     color: #ffffff !important;
 }
 .avatar-image{

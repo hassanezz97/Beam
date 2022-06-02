@@ -1,12 +1,12 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-// implements MustVerifyEmail
-class User extends Authenticatable
+
+class Business extends Authenticatable
 {
     use Notifiable;
     protected $fillable = [

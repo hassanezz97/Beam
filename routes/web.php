@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,7 +24,7 @@ Route::group(
             Route::get('/businesses', 'HomeController@visitBusiness')->name('businesses');
 
         //////////////////////////// Registration ///////////////////////////
-        Route::get('/registration-inf', 'HomeController@registerInfluencer')->name('reg-influencer');
+//        Route::get('/registration-inf', 'HomeController@registerInfluencer')->name('reg-influencer');
 
 
         //////////////////// Influencers ////////////////////////////////////
@@ -41,13 +42,19 @@ Route::group(
             Route::get('/influencer/search-username', 'HomeController@searchUsername')->name('searchUsername');
 
 
+
+
+    Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+
+
+    Route::get('/business/register', 'HomeController@registerBusiness')->name('register-bus');
+
 });
 
 
 //Route::get('/influencer/email-verification', 'HomeController@verification')->name('verification');
-
+//['verify'=>true]
 Auth::routes();
-
 Route::group(['middleware'=>['guest']], function (){
     Route::get('/', function()
     {
@@ -55,4 +62,23 @@ Route::group(['middleware'=>['guest']], function (){
 //        return view('auth.login');
     });
 });
-Route::get('/home', 'HomeController@index')->name('home');
+
+
+//------------------------------Registration------------------------- //
+//Route::get('/register', 'HomeController@registerInfluencer')->name('register');
+
+//Route::get('/register/secondStep', 'RegisterController@firstStepSubmit')->name('firstStepSubmit');
+
+//Route::get('/register', function () {
+//    return view('auth.register');
+//})->name('register');
+
+//Route::group(['namespace'=>'Auth'],function (){
+//    Route::get('/personalinfo', 'RegisterController@accountValidator')->name('personalinfo');
+//});
+//Route::get('wizard', function () {
+//    return view('default');
+//});
+//Route::get('wizard2', function () {
+//    return view('default2');
+//});

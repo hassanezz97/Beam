@@ -36,7 +36,7 @@
     <!-- /Left Text -->
 
     <!--  Multi Steps Registration -->
-    <div class="d-flex col-lg-8 align-items-center authentication-bg p-sm-5 p-3">
+    <div class="d-flex col-lg-8 align-items-center authentication-bg p-sm-5 p-3" >
         <div class="w-px-700 mx-auto">
             <div id="multiStepsValidation" class="bs-stepper shadow-none">
                 <div class="bs-stepper-header border-bottom-0">
@@ -44,9 +44,9 @@
                         <button type="button" class="step-trigger">
                             <span class="bs-stepper-circle"><i class="bx bx-home-alt"></i></span>
                             <span class="bs-stepper-label mt-1">
-                  <span class="bs-stepper-title" ><span class="head label">Account</span></span>
-                  <span class="bs-stepper-subtitle">Account Details</span>
-                </span>
+                              <span class="bs-stepper-title" ><span class="head label">Account</span></span>
+                              <span class="bs-stepper-subtitle">Account Details</span>
+                            </span>
                         </button>
                     </div>
                     <div class="line">
@@ -68,14 +68,16 @@
                         <button type="button" class="step-trigger">
                             <span class="bs-stepper-circle"><i class="bx bx-detail"></i></span>
                             <span class="bs-stepper-label mt-1">
-                                <span class="bs-stepper-title"><span class="head label">Billing</span></span>
-                  <span class="bs-stepper-subtitle">Payment Details</span>
-                </span>
+                                <span class="bs-stepper-title"><span class="head label">Profile</span></span>
+                                <span class="bs-stepper-subtitle">Profile Details</span>
+                            </span>
                         </button>
                     </div>
                 </div>
                 <div class="bs-stepper-content">
-                    <form id="multiStepsForm" onSubmit="return false">
+{{--                    onSubmit="return false"--}}
+                    <form id="multiStepsForm" method="POST" action="{{ route('register') }}" >
+                    @csrf
                         <!-- Account Details -->
                         <div id="accountDetailsValidation" class="content">
                             <div class="content-header mb-3">
@@ -84,36 +86,33 @@
                             </div>
                             <div class="row g-3">
                                 <div class="col-sm-6">
-                                    <label class="form-label" for="multiStepsUsername">Username</label>
-                                    <input type="text" name="multiStepsUsername" id="multiStepsUsername" class="form-control" placeholder="johndoe" />
+                                    <label class="form-label" for="multiStepsUsername">{{ __('Name') }}</label>
+                                    <input type="text"  id="multiStepsUsername" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="johndoe" value="{{ old('name') }}" required autocomplete="name" autofocus/>
                                 </div>
                                 <div class="col-sm-6">
-                                    <label class="form-label" for="multiStepsEmail">Email</label>
-                                    <input type="email" name="multiStepsEmail" id="multiStepsEmail" class="form-control" placeholder="john.doe@email.com" aria-label="john.doe" />
+                                    <label class="form-label" for="multiStepsEmail">{{ __('E-Mail Address') }}</label>
+                                    <input type="email"  id="multiStepsEmail" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="john.doe@email.com" aria-label="john.doe" value="{{ old('email') }}" required autocomplete="email" />
                                 </div>
                                 <div class="col-sm-6 form-password-toggle">
-                                    <label class="form-label" for="multiStepsPass">Password</label>
+                                    <label class="form-label" for="multiStepsPass">{{ __('Password') }}</label>
                                     <div class="input-group input-group-merge">
-                                        <input type="password" id="multiStepsPass" name="multiStepsPass" class="form-control" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="multiStepsPass2" />
+                                        <input type="password" id="multiStepsPass"  class="form-control @error('password') is-invalid @enderror" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="multiStepsPass2" required autocomplete="new-password"/>
                                         <span class="input-group-text cursor-pointer" id="multiStepsPass2"><i class="bx bx-hide"></i></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-6 form-password-toggle">
-                                    <label class="form-label" for="multiStepsConfirmPass">Confirm Password</label>
+                                    <label class="form-label" for="multiStepsConfirmPass">{{ __('Confirm Password') }}</label>
                                     <div class="input-group input-group-merge">
-                                        <input type="password" id="multiStepsConfirmPass" name="multiStepsConfirmPass" class="form-control" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="multiStepsConfirmPass2" />
+                                        <input type="password" id="multiStepsConfirmPass" name="password_confirmation"  class="form-control" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="multiStepsConfirmPass2" required autocomplete="new-password"/>
                                         <span class="input-group-text cursor-pointer" id="multiStepsConfirmPass2"><i class="bx bx-hide"></i></span>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <label class="form-label" for="multiStepsURL">Profile Link</label>
-                                    <input type="text" name="multiStepsURL" id="multiStepsURL" class="form-control" placeholder="johndoe/profile" aria-label="johndoe" />
-                                </div>
+
                                 <div class="col-12 d-flex justify-content-between">
                                     <button class="btn btn-label-secondary btn-prev" disabled> <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
                                         <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                     </button>
-                                    <button class="btn btn-primary btn-next"> <span class="align-middle d-sm-inline-block d-none me-sm-1 me-0">Next</span> <i class="bx bx-chevron-right bx-sm me-sm-n2"></i></button>
+                                    <button type="submit" class="btn btn-primary" > <span class="align-middle d-sm-inline-block d-none me-sm-1 me-0">Next</span> <i class="bx bx-chevron-right bx-sm me-sm-n2"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -135,28 +134,22 @@
                                 <div class="col-sm-6">
                                     <label class="form-label" for="multiStepsMobile">Mobile</label>
                                     <div class="input-group input-group-merge">
-                                        <span class="input-group-text">US (+1)</span>
-                                        <input type="text" id="multiStepsMobile" name="multiStepsMobile" class="form-control multi-steps-mobile" placeholder="202 555 0111" />
+                                        <span class="input-group-text">LB (+961)</span>
+                                        <input type="text" id="multiStepsMobile" name="multiStepsMobile" class="form-control multi-steps-mobile" placeholder="202 555" />
                                     </div>
                                 </div>
+{{--                                <div class="col-sm-6">--}}
+{{--                                    <label class="form-label" for="multiStepsPincode">Pincode</label>--}}
+{{--                                    <input type="text" id="multiStepsPincode" name="multiStepsPincode" class="form-control multi-steps-pincode" placeholder="Postal Code" maxlength="6" />--}}
+{{--                                </div>--}}
+{{--                                <div class="col-md-12">--}}
+{{--                                    <label class="form-label" for="multiStepsAddress">Address</label>--}}
+{{--                                    <input type="text" id="multiStepsAddress" name="multiStepsAddress" class="form-control" placeholder="Address" />--}}
+{{--                                </div>--}}
+
+
                                 <div class="col-sm-6">
-                                    <label class="form-label" for="multiStepsPincode">Pincode</label>
-                                    <input type="text" id="multiStepsPincode" name="multiStepsPincode" class="form-control multi-steps-pincode" placeholder="Postal Code" maxlength="6" />
-                                </div>
-                                <div class="col-md-12">
-                                    <label class="form-label" for="multiStepsAddress">Address</label>
-                                    <input type="text" id="multiStepsAddress" name="multiStepsAddress" class="form-control" placeholder="Address" />
-                                </div>
-                                <div class="col-md-12">
-                                    <label class="form-label" for="multiStepsArea">Landmark</label>
-                                    <input type="text" id="multiStepsArea" name="multiStepsArea" class="form-control" placeholder="Area/Landmark" />
-                                </div>
-                                <div class="col-sm-6">
-                                    <label class="form-label" for="multiStepsCity">City</label>
-                                    <input type="text" id="multiStepsCity" class="form-control" placeholder="Jackson" />
-                                </div>
-                                <div class="col-sm-6">
-                                    <label class="form-label" for="multiStepsState">State</label>
+                                    <label class="form-label" for="multiStepsState">Country</label>
                                     <select id="multiStepsState" class="select2 form-select" data-allow-clear="true">
                                         <option value="">Select</option>
                                         <option value="AL">Alabama</option>
@@ -212,66 +205,58 @@
                                         <option value="WY">Wyoming</option>
                                     </select>
                                 </div>
+                                <div class="col-sm-6">
+                                    <label class="form-label" for="multiStepsCity">City</label>
+                                    <input type="text" id="multiStepsCity" class="form-control" placeholder="Jackson" />
+                                </div>
                                 <div class="col-12 d-flex justify-content-between">
                                     <button class="btn btn-primary btn-prev"> <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
                                         <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                     </button>
-                                    <button class="btn btn-primary btn-next"> <span class="align-middle d-sm-inline-block d-none me-sm-1 me-0">Next</span> <i class="bx bx-chevron-right bx-sm me-sm-n2"></i></button>
+                                    <button  class="btn btn-primary btn-next"> <span class="align-middle d-sm-inline-block d-none me-sm-1 me-0">Next</span> <i class="bx bx-chevron-right bx-sm me-sm-n2"></i></button>
                                 </div>
                             </div>
                         </div>
                         <!-- Billing Links -->
                         <div id="billingLinksValidation" class="content">
                             <div class="content-header mb-3">
-                                <h3 class="mb-1">Select Plan</h3>
-                                <span>Select plan as per your requirement</span>
+                                <h3 class="mb-1">Profile Picture</h3>
+                                <span>Got a favorite selfie? Upload it now. </span>
                             </div>
                             <!-- Custom plan options -->
                             <div class="row gap-md-0 gap-3 mb-4">
-                                <div class="col-md">
-                                    <div class="form-check custom-option custom-option-icon">
-                                        <label class="form-check-label custom-option-content" for="basicOption">
-                        <span class="custom-option-body">
-                          <h4 class="mb-2">Basic</h4>
-                          <p class="mb-2">A simple start for start ups & Students</p>
-                          <span class="d-flex justify-content-center">
-                            <sup class="text-primary fs-big lh-1 mt-3">$</sup>
-                            <span class="display-5 text-primary">0</span>
-                            <sub class="lh-1 fs-big mt-auto mb-2 text-muted">/month</sub>
-                          </span>
-                        </span>
-                                            <input name="customRadioIcon" class="form-check-input" type="radio" value="" id="basicOption" />
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-md">
-                                    <div class="form-check custom-option custom-option-icon">
-                                        <label class="form-check-label custom-option-content" for="standardOption">
-                        <span class="custom-option-body">
-                          <h4 class="mb-2">Standard</h4>
-                          <p class="mb-2">For small to medium businesses</p>
-                          <span class="d-flex justify-content-center">
-                            <sup class="text-primary fs-big lh-1 mt-3">$</sup>
-                            <span class="display-5 text-primary">99</span>
-                            <sub class="lh-1 fs-big mt-auto mb-2 text-muted">/month</sub>
-                          </span>
-                        </span>
-                                            <input name="customRadioIcon" class="form-check-input" type="radio" value="" id="standardOption" checked />
-                                        </label>
-                                    </div>
-                                </div>
+{{--                                <div class="col-md">--}}
+{{--                                    <div class="form-check custom-option custom-option-icon">--}}
+{{--                                        <label class="form-check-label custom-option-content" for="standardOption">--}}
+{{--                        <span class="custom-option-body">--}}
+{{--                          <h4 class="mb-2">Standard</h4>--}}
+{{--                          <p class="mb-2">For small to medium businesses</p>--}}
+{{--                          <span class="d-flex justify-content-center">--}}
+{{--                            <sup class="text-primary fs-big lh-1 mt-3">$</sup>--}}
+{{--                            <span class="display-5 text-primary">99</span>--}}
+{{--                            <sub class="lh-1 fs-big mt-auto mb-2 text-muted">/month</sub>--}}
+{{--                          </span>--}}
+{{--                        </span>--}}
+{{--                                            <input name="customRadioIcon" class="form-check-input" type="radio" value="" id="standardOption" checked />--}}
+{{--                                        </label>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                                 <div class="col-md">
                                     <div class="form-check custom-option custom-option-icon">
                                         <label class="form-check-label custom-option-content" for="enterpriseOption">
-                        <span class="custom-option-body">
-                          <h4 class="mb-2">Enterprise</h4>
-                          <p class="mb-2">Solution for enterprise & organizations</p>
-                          <span class="d-flex justify-content-center">
-                            <sup class="text-primary fs-big lh-1 mt-3">$</sup>
-                            <span class="display-5 text-primary">499</span>
-                            <sub class="lh-1 fs-big mt-auto mb-2 text-muted">/year</sub>
-                          </span>
-                        </span>
+                                            <span class="custom-option-body">
+                                              <h4 class="mb-2">Enterprise</h4>
+                                              <p class="mb-2">Solution for enterprise & organizations</p>
+                                              <span class="d-flex justify-content-center">
+                                                <sup class="text-primary fs-big lh-1 mt-3">$</sup>
+                                                  <button class="btn btn-primary btn-prev"> <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
+                                                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
+                                                  </button>
+                                                  <button type="submit" class="btn btn-success btn-next btn-submit">Submit</button>
+                                                <span class="display-5 text-primary">499</span>
+                                                <sub class="lh-1 fs-big mt-auto mb-2 text-muted">/year</sub>
+                                              </span>
+                                            </span>
                                             <input name="customRadioIcon" class="form-check-input" type="radio" value="" id="enterpriseOption" />
                                         </label>
                                     </div>

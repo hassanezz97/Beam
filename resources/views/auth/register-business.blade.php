@@ -32,12 +32,12 @@
 
         <!-- Left Text -->
         <div class="d-none d-lg-flex col-lg-4 align-items-center justify-content-end p-5 pe-0">
-            <div class="w-px-400" >
+            <div class="w-px-400">
                 <img src="{{ URL::asset('assets/images/registraion-images/create-account-light.png') }}" class="img-fluid" alt="multi-steps" width="600" >
             </div>
         </div>
         <!-- /Left Text -->
-        @livewire('register-wizard')
+        @livewire('register-business-wizard')
 
 
         <!--=================================

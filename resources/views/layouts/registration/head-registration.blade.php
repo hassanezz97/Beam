@@ -9,13 +9,21 @@
 @if (App::getLocale() == 'ar')
     <link href="{{ URL::asset('css/rtl.css') }}" rel="stylesheet">
 @endif
-<link href="{{ URL::asset('css/registration/style-inf.css') }}" rel="stylesheet">
+@if((request()->segment(2) ==  'business'))
+    <link href="{{ URL::asset('css/registration/style-business.css') }}" rel="stylesheet">
+@else
+    <link href="{{ URL::asset('css/registration/style-inf.css') }}" rel="stylesheet">
+@endif
+
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 <meta name="description" content="Most Powerful &amp; Comprehensive Bootstrap 5 HTML Admin Dashboard Template built for developers!" />
 <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
-<!-- laravel CRUD token -->
-<meta name="csrf-token" content="M2ok7QH7DBVMVgISTHHCsEWeMzvxWdIIChD4aIXs">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <!-- Canonical SEO -->
 <link rel="canonical" href="https://themeselection.com/item/sneat-bootstrap-html-laravel-admin-template/">
 <!-- Favicon -->

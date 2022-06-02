@@ -50,7 +50,7 @@
                 </form>
             </div>
             <div class="modal-footer justify-content-center">
-                <p>Not a member? <a href="#">Create an account</a></p>
+                <p>Not a member? <a href="{{route('register')}}">Create an account</a></p>
             </div>
         </div>
     </div>
