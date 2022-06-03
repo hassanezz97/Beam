@@ -66,7 +66,28 @@
                 <span class="input-group-text instagram-link" id="basic-addon3">https://instagram.com/</span>
                 <input type="text" id="multiStepsName" wire:model="instagram_username" class="form-control instagram-username" name="multiStepsName" placeholder="Johndoe99" />
             </div>
+        </div>
+        <div class="col-md-12">
+            <label class="form-label" for="multiStepsName"> Headline</label>
+            <div class="input-group-prepend">
 
+                <small class="help-block">
+                                                  A short one-liner that describes you. This will sometimes be
+                                                  displayed next to your username.
+                </small>
+                <br>
+                </div>
+{{--            <textarea class="form-control" placeholder="Tell the world about yourself here." style="min-height: 100px" name="account[bio]" id="account_bio"></textarea>--}}
+            <input
+                type="text"
+                id="multiStepsEmail"
+                class="form-control @error('headline') is-invalid @enderror"
+                wire:model="headline"
+                placeholder=""
+                aria-label=""
+                value="{{ old('headline') }}"
+                required
+            />
         </div>
 
 

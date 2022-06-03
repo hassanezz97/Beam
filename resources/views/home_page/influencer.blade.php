@@ -56,10 +56,6 @@
             <u><a class="learn-more" href="{{route('businesses')}}">Learn more here!</a></u>
         </p>
         <br><br>
-
-
-
-
     </div>
 
 

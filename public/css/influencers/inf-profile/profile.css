@@ -179,7 +179,7 @@ a.label:hover,a.label:focus{
 }
 @media (min-width: 1200px){
     .new-header-section.profile-header .background-image{
-        background-size:1400px;
+        background-size:1250px;
         background-repeat:no-repeat
     }
 }
@@ -318,3 +318,22 @@ img {
     color: white;
 }
 
+
+
+/*View profile design*/
+.social-links-list{
+    margin-top: 10px;
+}
+.social-links-attribute{
+    margin-left: 10px;
+}
+.social-links-icon{
+    font-size: 20px;
+}
+.profile-header-avatar.img-responsive{
+   float: none;
+}
+
+.label-default{
+background-color: #81acdb ;
+}

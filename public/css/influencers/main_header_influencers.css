@@ -1,6 +1,6 @@
 
 .navbar.navbar-expand-lg{
-    background-color:#F5937A;
+    background-color:#81acdb;
 }
 
 
@@ -139,7 +139,7 @@ hr {
 header {
     float: left;
     width: 100%;
-    background-color: #F5937A;
+    background-color: #81acdb;
 }
 .header-data {
     float: left;
@@ -172,12 +172,12 @@ header {
 .ask-question {
     background-color: #fff;
     padding: 10px 25px;
-    color: #F5937A !important;
+    color: #81acdb !important;
     font-size: 14px;
     font-weight: 600;
 }
 .ask-question:hover {
-    color: #F5937A;
+    color: #81acdb;
 }
 
 .forum-bar ul li {
@@ -255,7 +255,7 @@ header {
     border: 0;
 }
 .search-bar form button i {
-    color: #F5937A;
+    color: #81acdb;
     font-size: 20px;
     font-weight: bold;
 }
@@ -413,8 +413,8 @@ nav > ul > li > a:hover {
 .user-account {
     float: right;
     width: 150px;
-    border-left: 1px solid #de7d65;
-    border-right: 1px solid #de7d65;
+    border-left: 1px solid #6b89b6;
+    border-right: 1px solid #6b89b6;
     box-sizing: border-box;
     position: relative;
 }

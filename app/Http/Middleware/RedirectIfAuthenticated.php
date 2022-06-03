@@ -16,12 +16,22 @@ class RedirectIfAuthenticated
      * @param  string|null  $guard
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = null)
+    public function handle($request, Closure $next)
     {
-        if (Auth::guard($guard)->check()) {
-            return redirect(RouteServiceProvider::HOME);
+//        if (Auth::guard($guard)->check()) {
+//            return redirect(RouteServiceProvider::HOME);
+//        }
+
+//        if (auth('web')->check()) {
+//            return redirect(RouteServiceProvider::HOME);
+//        }
+        if (auth('influencer')->check()) {
+            return redirect(RouteServiceProvider::Influencer);
         }
 
+        if (auth('business')->check()) {
+            return redirect(RouteServiceProvider::Business);
+        }
         return $next($request);
     }
 }

@@ -40,7 +40,14 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-      
+        'influencer' => [
+            'driver' => 'session',
+            'provider' => 'influencers',
+        ],
+        'business' => [
+            'driver' => 'session',
+            'provider' => 'businesses',
+        ],
 
         'api' => [
             'driver' => 'token',
@@ -71,7 +78,14 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
-
+        'influencers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Influencer::class,
+        ],
+        'businesses' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Business::class,
+        ],
 
         // 'users' => [
         //     'driver' => 'database',

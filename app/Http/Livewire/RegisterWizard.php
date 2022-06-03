@@ -4,9 +4,9 @@ namespace App\Http\Livewire;
 
 use App\Models\Category;
 use App\Models\Country;
+use App\Models\Gender;
+use App\Models\Influencer;
 use App\Providers\RouteServiceProvider;
-use App\User;
-
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use Illuminate\Auth\Events\Registered;
@@ -18,7 +18,7 @@ class RegisterWizard  extends Component
 {
     use WithFileUploads;
     public $currentStep = 1;
-    public $name, $email, $password,$password_confirmation,$first_name,$last_name,$mobile,$country,$city,$category,$date_of_birth,$instagram_username;
+    public $name, $email, $password,$password_confirmation,$first_name,$last_name,$gender,$mobile,$country,$city,$category,$date_of_birth,$instagram_username,$headline;
     public $profile_picture;
     public $successMessage = '';
 
@@ -26,6 +26,7 @@ class RegisterWizard  extends Component
     public function render()
     {
         return view('livewire.register-wizard', [
+            'Genders' => Gender::all(),
             'Countries' => Country::all(),
             'Categories' => Category::all(),
         ]);
@@ -34,8 +35,8 @@ class RegisterWizard  extends Component
     public function firstStepSubmit()
     {
         $validatedData = $this->validate([
-            'name' => 'required|string|max:255|unique:users|alpha_num',
-            'email' => 'required|string|email|max:255|unique:users',
+            'name' => 'required|string|max:255|unique:influencers|alpha_num',
+            'email' => 'required|string|email|max:255|unique:influencers',
             'password' => 'required|string|confirmed|min:8',
             'password_confirmation' => 'required|string',
         ]);
@@ -64,8 +65,9 @@ class RegisterWizard  extends Component
         $validatedData = $this->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'country' => 'required|string',
+            'gender' => 'required|string',
             'mobile' => 'required|string',
+            'country' => 'required|string',
             'city' => 'required|string',
         ]);
 
@@ -78,12 +80,13 @@ class RegisterWizard  extends Component
          $profile_picture = $this->profile_picture;
         $profile_picture->storeAs($this->name, $profile_picture->getClientOriginalName(), $disk = 'influencer_images');
 
-        $user= User::create([
+        $user= Influencer::create([
             'name' => $this->name,
             'email' => $this->email,
             'password' => Hash::make($this->password),
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
+            'gender_id' => $this->gender,
             'country_id' => $this->country,
             'mobile' => $this->mobile,
             'city' => $this->city,
@@ -91,9 +94,10 @@ class RegisterWizard  extends Component
             'category_id' => $this->category,
             'date_of_birth' => $this->date_of_birth,
             'instagram_username' => $this->instagram_username,
+            'headline' => $this->headline,
         ]);
         event(new Registered($user));
-//        Auth::login($user);
+        Auth::login($user);
         $this->successMessage = 'Product Created Successfully.';
 
         $this->clearForm();

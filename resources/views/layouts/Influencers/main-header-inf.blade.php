@@ -43,8 +43,8 @@ header start-->
                             {{trans('mainpage_Influencer.profile')}}
                         </a>
                         <ul>
-                            <li><a href="user-profile.html" title="">Edit Your Profile</a></li>
-                            <li><a href="my-profile-feed.html" title="">View Your Profile</a></li>
+                            <li><a href="{{route('edit-profile-influencer')}}" title="">Edit Your Profile</a></li>
+                            <li><a href="{{route('view-profile-influencer')}}" title="">View Your Profile</a></li>
                         </ul>
                     </li>
 
@@ -133,7 +133,7 @@ header start-->
             <div class="user-account">
                 <div class="user-info">
                     <img src="{{ URL::asset('assets/images/icons/user.png') }}" alt="">
-                    <a href="#" title="">Hassan</a>
+                    <a href="#" title="">{{ Auth::user()->name }}</a>
                     <i class="fa fa-arrow-down"></i>
                 </div>
                 <div class="user-account-settingss" id="users">
@@ -144,12 +144,23 @@ header start-->
                         <li><a href="#" title="">Faqs</a></li>
                         <li><a href="#" title="">Terms & Conditions</a></li>
                     </ul>
-                    <h3 class="tc"><a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();"
-                                      title="">{{trans('mainpage_Influencer.logout')}}</a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
+                    <h3 class="tc">
+{{--                        <a href="#" onclick="event.preventDefault();--}}
+{{--                                    document.getElementById('logout-form').submit();" title="">{{trans('mainpage_Influencer.logout')}}</a>--}}
+{{--                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">--}}
+
+{{--                            @csrf--}}
+{{--                        </form>--}}
+                        @if(auth('business')->check())
+                            <form id="logout-form" method="GET" action="{{ route('logout','business') }}">
+                                  @else
+                                    <form id="logout-form" method="GET" action="{{ route('logout','web') }}">
+                                        @endif
+                                        @csrf
+{{--                                        <a class="dropdown-item" href="#" onclick="event.preventDefault();this.closest('form').submit();"><i class="bx bx-log-out"></i>تسجيل الخروج</a>--}}
+                                        <a href="#" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();" title="">{{trans('mainpage_Influencer.logout')}}</a>
+                                    </form>
                     </h3>
                 </div>
             </div>

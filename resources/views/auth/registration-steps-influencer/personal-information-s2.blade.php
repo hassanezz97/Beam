@@ -14,6 +14,26 @@
             <input type="text" id="multiStepsLastName" wire:model="last_name" name="multiStepsLastName" class="form-control @error('last_name') is-invalid @enderror" placeholder="Doe" />
             @error('last_name') <span class="error">{{ $message }}</span> @enderror
         </div>
+        <div class="col-sm-6">
+            <label class="form-label" for="multiStepsState">Gender</label>
+            <select id="multiStepsState" wire:model="gender" class="select2 form-select @error('gender') is-invalid @enderror" data-allow-clear="true">
+                <option value="">Select</option>
+                @foreach($Genders as $Gender)
+                    <option value="{{$Gender->id}}">{{$Gender->name}}</option>
+                @endforeach
+            </select>
+            @error('gender') <span class="error">{{ $message }}</span> @enderror
+        </div>
+
+
+        <div class="col-sm-6">
+            <label class="form-label" for="multiStepsMobile">Mobile</label>
+            <div class="input-group input-group-merge">
+                <span class="input-group-text ">LB (+961)</span>
+                <input type="text" id="multiStepsMobile" wire:model="mobile" name="multiStepsMobile" class="form-control  multi-steps-mobile @error('mobile') is-invalid @enderror" placeholder="202 555" />
+            </div>
+            @error('mobile') <span class="error">{{ $message }}</span> @enderror
+        </div>
 
         <div class="col-sm-6">
             <label class="form-label" for="multiStepsState">Country</label>
@@ -24,15 +44,6 @@
                 @endforeach
             </select>
             @error('country') <span class="error">{{ $message }}</span> @enderror
-        </div>
-
-        <div class="col-sm-6">
-            <label class="form-label" for="multiStepsMobile">Mobile</label>
-            <div class="input-group input-group-merge">
-                <span class="input-group-text ">LB (+961)</span>
-                <input type="text" id="multiStepsMobile" wire:model="mobile" name="multiStepsMobile" class="form-control  multi-steps-mobile @error('mobile') is-invalid @enderror" placeholder="202 555" />
-            </div>
-            @error('mobile') <span class="error">{{ $message }}</span> @enderror
         </div>
 
         <div class="col-sm-6">

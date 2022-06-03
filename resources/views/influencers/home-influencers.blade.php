@@ -35,11 +35,13 @@
                                 <div class="user-profile">
                                     <div class="username-dt">
                                         <div class="usr-pic">
-                                            <img src="{{ URL::asset('assets/images/icons/user-pic.png') }}" alt="">
+{{--                                            <img src="<?php echo asset("storage/app/business_images/abbass/asdwq.png")?>" alt="">--}}
+
+                                            <img src="{{ asset('assets/images/icons/s2.png') }}" alt="tag">
                                         </div>
                                     </div>
                                     <div class="user-specs">
-                                        <h3>Hassan Ezzeddine</h3>
+                                        <h3>{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</h3>
                                         <span>Web Developer</span>
 
                                     </div>

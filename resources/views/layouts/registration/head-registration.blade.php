@@ -9,7 +9,7 @@
 @if (App::getLocale() == 'ar')
     <link href="{{ URL::asset('css/rtl.css') }}" rel="stylesheet">
 @endif
-@if((request()->segment(2) ==  'business'))
+@if((request()->segment(1) ==  'business'))
     <link href="{{ URL::asset('css/registration/style-business.css') }}" rel="stylesheet">
 @else
     <link href="{{ URL::asset('css/registration/style-inf.css') }}" rel="stylesheet">

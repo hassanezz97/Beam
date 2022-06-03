@@ -44,7 +44,7 @@
 
 <!--=================================
 footer -->
-
+@include('auth.login-modal-business')
 @include('layouts.footer')
 
 <!--=================================

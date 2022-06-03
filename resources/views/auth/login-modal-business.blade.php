@@ -16,7 +16,7 @@
                     @csrf
                     <div class="form-group">
                         <input type="text" class="form-control rounded-left @error('email') is-invalid @enderror" placeholder="Email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocu>
-                        <input type="hidden" value="influencer" name="type">
+                        <input type="hidden" value="business" name="type">
                         @error('email')
                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -52,7 +52,7 @@
             </div>
             <div class="modal-footer justify-content-center">
 {{--                {{route('register')}}--}}
-                <p>Not a member? <a href="{{route('register-inf')}}">Create an account</a></p>
+                <p>Not a member? <a href="{{route('register-bus')}}">Create an account</a></p>
             </div>
         </div>
     </div>

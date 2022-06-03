@@ -32,8 +32,15 @@
     <div style="background-color: #F2F5F7;">
         <section id="header-section" class="new-header-section profile-header">
 
-            <div class="background-image" >
-                <img src=" {{ URL::asset('assets/images/icons/cover-img.jpg') }}" />
+            <div class="background-image" style="background-image: url(https://influence.co/assets/unclaimed-profile-header-images/austin-smart-70350-unsplash-a50beabe16bc3068b098291fc41594a8fe0e25f45732e2200384a6b001d52ba5.jpg);">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 text-right">
+                            <br>
+                            {{--                                <a class="btn btn-default edit-profile-button" href="/influencers/6211589751d0aa56f86fa18e/edit">Edit Profile</a>--}}
+                        </div>
+                    </div>
+                </div>
 
                 <div class="container">
                     <div class="row">
@@ -254,7 +261,9 @@
 
                                             </div>
                                             <div class="col-sm-6">
-                                                <label for="account_bio">Bio</label> <small class="text-muted pull-right">Max 5000 characters.</small><br>
+                                                <label for="account_bio">Bio</label>
+                                                <small class="text-muted pull-right">Max 5000 characters.</small>
+                                                <br>
                                                 <textarea class="form-control" placeholder="Tell the world about yourself here. This is a place to share a lot more information." style="min-height: 200px" name="account[bio]" id="account_bio"></textarea>
                                                 <br>
 

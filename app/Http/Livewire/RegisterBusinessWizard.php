@@ -2,11 +2,14 @@
 
 namespace App\Http\Livewire;
 
+
 use App\Models\Business;
 use App\Models\Category;
 use App\Models\Country;
 
 use Illuminate\Auth\Events\Registered;
+
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -22,7 +25,7 @@ class RegisterBusinessWizard extends Component
 
     public function render()
     {
-        return view('livewire.register-wizard', [
+        return view('livewire.register-business-wizard', [
             'Countries' => Country::all(),
             'Categories' => Category::all(),
         ]);
@@ -89,8 +92,12 @@ class RegisterBusinessWizard extends Component
             'date_of_birth' => $this->date_of_birth,
             'instagram_username' => $this->instagram_username,
         ]);
-        event(new Registered($business));
-//        Auth::login($user);
+//        event(new Registered($business));
+        Auth::login($business);
+
+//       (new \App\Http\Controllers\Auth\LoginController)->login($business);
+
+
         $this->successMessage = 'Product Created Successfully.';
 
         $this->clearForm();

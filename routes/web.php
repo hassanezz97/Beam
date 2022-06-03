@@ -17,11 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth' ]
     ], function(){
-        //////////////////////////// Home pages ///////////////////////////
-            Route::get('/home-inf', 'HomeController@home')->name('influencer');
-            Route::get('/businesses', 'HomeController@visitBusiness')->name('businesses');
 
         //////////////////////////// Registration ///////////////////////////
 //        Route::get('/registration-inf', 'HomeController@registerInfluencer')->name('reg-influencer');
@@ -29,11 +26,11 @@ Route::group(
 
         //////////////////// Influencers ////////////////////////////////////
             Route::get('/influencer/home', 'HomeController@visitInfluencersHome')->name('home');
-            Route::get('/influencer/profile', 'HomeController@setupProfile')->name('profile');
+//            Route::get('/influencer/profile', 'HomeController@setupProfile')->name('profile');
 
-        //////////////////// Business /////////////////////////////////////////
-            Route::get('/business/home', 'HomeController@visitBusinessHome')->name('home-bus');
-            Route::get('/business/profile', 'HomeController@setupBusinessProfile')->name('profile-bus');
+//        //////////////////// Business /////////////////////////////////////////
+//            Route::get('/business/home', 'HomeController@visitBusinessHome')->name('home-bus');
+//            Route::get('/business/profile', 'HomeController@setupBusinessProfile')->name('profile-bus');
 
         //////////////////////// Search //////////////////////////////////
             Route::get('/influencer/advanced-search', 'HomeController@advancedSearch')->name('advSearch');
@@ -44,24 +41,37 @@ Route::group(
 
 
 
-    Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
-
-
-    Route::get('/business/register', 'HomeController@registerBusiness')->name('register-bus');
+//    Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
 });
 
+//////////////////////////// Home pages ///////////////////////////
+Route::get('/', 'HomeController@home')->middleware('guest')->name('influencer');
+
+
+
+Route::get('/influencer/register', 'HomeController@registerInfluencer')->name('register-inf');
+// authentication
+
+Route::group(['namespace' => 'Auth'], function () {
+    Route::post('/','LoginController@login')->name('login');
+    Route::get('/logout/{type}', 'LoginController@logout')->name('logout');
+});
 
 //Route::get('/influencer/email-verification', 'HomeController@verification')->name('verification');
 //['verify'=>true]
-Auth::routes();
-Route::group(['middleware'=>['guest']], function (){
-    Route::get('/', function()
-    {
-        return view('home_page.influencer');
-//        return view('auth.login');
-    });
-});
+//Auth::routes();
+
+
+
+
+//Route::group(['middleware'=>['guest']], function (){
+//    Route::get('/', function()
+//    {
+//        return view('home_page.influencer');
+////        return view('auth.login');
+//    });
+//});
 
 
 //------------------------------Registration------------------------- //

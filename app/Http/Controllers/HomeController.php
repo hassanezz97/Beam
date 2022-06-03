@@ -24,7 +24,7 @@ class HomeController extends Controller
     }
     public function registerInfluencer()
     {
-        return view('auth.register-business');
+        return view('auth.register');
     }
     public function registerBusiness()
     {
@@ -40,7 +40,11 @@ class HomeController extends Controller
     }
     public function setupProfile()
     {
-        return view('influencers.profile-influencer');
+        return view('influencers.edit-profile-influencer');
+    }
+    public function viewProfile()
+    {
+        return view('influencers.view-profile-influencer');
     }
     public function advancedSearch()
     {
