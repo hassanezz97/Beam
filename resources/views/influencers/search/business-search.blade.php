@@ -1,8 +1,3 @@
-@extends('influencers.search.main-search')
-@section('tab-title')
-    Business Search
-@endsection
-@section('search-bar')
 
     <div class="search-form big-search-wrapper search-wrapper responsive">
         <form class="new_is" id="main_is_new_is" action="/influencer_searches" accept-charset="UTF-8" method="get">
@@ -69,5 +64,3 @@
         </form>
     </div>
 
-
-@endsection

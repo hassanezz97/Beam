@@ -15,7 +15,9 @@
         "laravel/framework": "^7.29|^8.80|^9.0",
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.10",
-        "mcamara/laravel-localization": "^1.7"
+        "mcamara/laravel-localization": "^1.7",
+        "pusher/pusher-php-server": "~4.0",
+        "yoeunes/toastr": "^2.0"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

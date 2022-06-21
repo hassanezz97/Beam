@@ -27,4 +27,16 @@ class Business extends Authenticatable
     {
         return $this->belongsTo('App\Models\Category', 'category_id');
     }
+    public function Request()
+    {
+        return $this->hasMany('App\Models\Request','request_id');
+    }
+    public function Information()
+    {
+        return $this->hasMany('App\Models\Information','information_id');
+    }
+    public function Collaborations()
+    {
+        return $this->hasMany('App\Models\Collaboration');
+    }
 }

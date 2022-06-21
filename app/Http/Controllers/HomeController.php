@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Influencer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -13,10 +15,18 @@ class HomeController extends Controller
 //    }
 
 
-    public function index()
+//    public function index()
+//    {
+////        $influencer_id = Auth::user()->id ;
+////        return view('influencers.home-influencers', compact('influencer_id'));
+//    }
+    public function visitBusiness()
     {
-        return view('influencers.home-influencers');
-        //        return view('home');
+        return view('home_page.businesses');
+    }
+    public function visitBusinessHome()
+    {
+        return view('businesses.home-business');
     }
     public function home()
     {
@@ -30,26 +40,34 @@ class HomeController extends Controller
     {
         return view('auth.register-business');
     }
-    public function visitBusiness()
-    {
-        return view('home_page.businesses');
-    }
-    public function visitInfluencersHome()
-    {
-        return view('influencers.home-influencers');
-    }
+
+//    public function visitInfluencersHome()
+//    {
+//
+//        return view('influencers.home-influencers');
+//    }
     public function setupProfile()
     {
         return view('influencers.edit-profile-influencer');
     }
-    public function viewProfile()
+//    public function viewProfile()
+//    {
+//        return view('influencers.view-profile-influencer', [
+//            'influencers'=>Influencer::inRandomOrder()->limit(3)->get(),
+//        ]);
+//    }
+
+    public function viewSingleInfluencer($name)
     {
-        return view('influencers.view-profile-influencer');
+        return view('influencers.single-profile-influencer', [
+            $influencer ='influencers'=>Influencer::where("name", $name)->first(),
+            $suggestions = Influencer::inRandomOrder()->limit(3)->get(),
+            ], compact('influencer','suggestions'));
     }
-    public function advancedSearch()
-    {
-        return view('influencers.search.advanced-search');
-    }
+//    public function advancedSearch()
+//    {
+//        return view('influencers.advanced-search-influencers');
+//    }
     public function searchInfluencer()
     {
         return view('influencers.search.influencer-search');
@@ -62,10 +80,7 @@ class HomeController extends Controller
     {
         return view('influencers.search.username-search');
     }
-    public function visitBusinessHome()
-    {
-        return view('businesses.home-business');
-    }
+
     public function setupBusinessProfile()
     {
         return view('businesses.profile-business');
@@ -74,5 +89,10 @@ class HomeController extends Controller
     public function verification()
     {
         return view('login.email-verification');
+    }
+
+    public function SingleInfluencerInBusiness()
+    {
+        return view('businesses.single-influencer-in-business');
     }
 }

@@ -7,6 +7,7 @@ use App\Models\Business;
 use App\Models\Category;
 use App\Models\Country;
 
+use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 
 use Illuminate\Support\Facades\Auth;
@@ -30,32 +31,18 @@ class RegisterBusinessWizard extends Component
             'Categories' => Category::all(),
         ]);
     }
+    public function mount(){
+
+    }
 
     public function firstStepSubmit()
     {
         $validatedData = $this->validate([
-            'name' => 'required|string|max:255|unique:users|alpha_num',
-            'email' => 'required|string|email|max:255|unique:users',
+            'name' => 'required|string|max:255|unique:businesses|alpha_num',
+            'email' => 'required|string|email|max:255|unique:businesses',
             'password' => 'required|string|confirmed|min:8',
             'password_confirmation' => 'required|string',
         ]);
-
-//        event(new Registered($user));
-//        Auth::login($user);
-        $this->currentStep = 2;
-
-    }
-
-
-    public function second2StepSubmit()
-    {
-//        $user = Auth::user();
-//        if( $user->hasVerifiedEmail()){
-//            $this->currentStep = 2;
-//        }
-//        else{
-//            $this->currentStep = 4;
-//        }
         $this->currentStep = 2;
     }
 
@@ -76,8 +63,9 @@ class RegisterBusinessWizard extends Component
     public function submitForm()
     {
         $profile_picture = $this->profile_picture;
-        $profile_picture->storeAs($this->name, $profile_picture->getClientOriginalName(), $disk = 'business_images');
-
+        if (!empty($profile_picture)){
+            $profile_picture->storeAs($this->name, $profile_picture->getClientOriginalName(), $disk = 'business_images');
+        }
         $business= Business::create([
             'name' => $this->name,
             'email' => $this->email,
@@ -94,15 +82,7 @@ class RegisterBusinessWizard extends Component
         ]);
 //        event(new Registered($business));
         Auth::login($business);
-
-//       (new \App\Http\Controllers\Auth\LoginController)->login($business);
-
-
-        $this->successMessage = 'Product Created Successfully.';
-
-        $this->clearForm();
-
-        $this->currentStep = 1;
+        return redirect()->to(RouteServiceProvider::Business);
     }
 
     public function back($step)
@@ -117,5 +97,17 @@ class RegisterBusinessWizard extends Component
         $this->password = '';
         $this->stock = '';
         $this->status = 1;
+    }
+
+    public function second2StepSubmit()
+    {
+//        $user = Auth::user();
+//        if( $user->hasVerifiedEmail()){
+//            $this->currentStep = 2;
+//        }
+//        else{
+//            $this->currentStep = 4;
+//        }
+        $this->currentStep = 2;
     }
 }

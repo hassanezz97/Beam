@@ -51,14 +51,28 @@ return [
             'driver' => 'local',
             'root' => storage_path('app/influencer_images'),
         ],
-        'business_images' => [
-            'driver' => 'local',
-            'root' => storage_path('app/business_images'),
-        ],
+//        'business_images' => [
+//            'driver' => 'local',
+//            'root' => storage_path('app/business_images'),
+//            'url' => env('APP_URL').'/storage',
+//            'visibility' => 'public',
+//        ],
 
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
+        'business_images' => [
+            'driver' => 'local',
+            'root' => storage_path('app/business_images'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
+        'collaboration_images' => [
+            'driver' => 'local',
+            'root' => storage_path('app/collaboration_images'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
@@ -87,7 +101,8 @@ return [
     */
 
     'links' => [
-        public_path('storage') => storage_path('app/public'),
+        public_path('storage') => storage_path('app'),
+//        public_path('storage') => storage_path('app/public'),
     ],
 
 ];

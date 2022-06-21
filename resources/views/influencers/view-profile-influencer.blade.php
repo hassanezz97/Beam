@@ -1,32 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.Influencers.master-blade-influencer')
+
+@section('css')
+
 @section('title')
     Beam
 @stop
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="keywords" content="HTML5 Template" />
-    <meta name="description" content="Webmin - Bootstrap 4 & Angular 5 Admin Dashboard Template" />
-    <meta name="author" content="potenzaglobalsolutions.com" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" media="all" href="{{ URL::asset('css/influencers/inf-profile/profile.css') }}" />
+<link rel="stylesheet" media="all" href="{{ URL::asset('css/collaboration/collaboration.css') }}" />
+@endsection
 
-    <link rel="stylesheet" media="all" href="{{ URL::asset('css/influencers/inf-profile/profile.css') }}" />
-    <link rel="stylesheet" media="screen" href="{{ URL::asset('css/influencers/inf-profile/profile2.css') }}" />
-
-    @include('layouts.Influencers.head-influencers')
-</head>
-
-<body class=" inf_action_influencers-edit ">
-
-
-@include('layouts.Influencers.main-header-inf')
-
-
-<!--=================================
- Main content -->
+@section('content')
 
     <div class="position-relative">
         <div style="background-color: #F2F5F7;">
@@ -37,7 +20,7 @@
                         <div class="row">
                             <div class="col-xs-12 text-right">
                                 <br>
-{{--                                <a class="btn btn-default edit-profile-button" href="/influencers/6211589751d0aa56f86fa18e/edit">Edit Profile</a>--}}
+                                {{--                                <a class="btn btn-default edit-profile-button" href="/influencers/6211589751d0aa56f86fa18e/edit">Edit Profile</a>--}}
                             </div>
                         </div>
                     </div>
@@ -46,10 +29,10 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-xs-12 text-right">
-{{--                                <p class="text-right" style="position: absolute; top: 20px; right: 20px">--}}
-{{--                                    <a class="btn btn-default" data-toggle="modal" href="#bg-upload-modal">--}}
-{{--                                        <span class="fa fa-edit"></span>--}}
-{{--                                    </a>  </p>--}}
+                                {{--                                <p class="text-right" style="position: absolute; top: 20px; right: 20px">--}}
+                                {{--                                    <a class="btn btn-default" data-toggle="modal" href="#bg-upload-modal">--}}
+                                {{--                                        <span class="fa fa-edit"></span>--}}
+                                {{--                                    </a>  </p>--}}
                                 <div class="modal fade" data-backdrop="static" id="snap-upload-modal">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -130,8 +113,8 @@
                             <div class="content">
                                 <div class="row row-same-height">
                                     <div class="col-sm-4 col-md-2 text-center-xs">
-                                        <img class="profile-header-avatar img-responsive" style="border: 4px solid #F5F5F6; margin-top: -60px" alt="" src="https://marmont-web-production.s3.amazonaws.com/external/influence_avatar.png" />
-                                        </div>
+                                        <img class="profile-header-avatar img-responsive" style="border: 4px solid #F5F5F6; margin-top: -60px" alt="" src="{{asset('storage/influencer_images/'.Auth::user()->name.'/'.Auth::user()->profile_picture.'' )}}" />
+                                    </div>
 
                                     <div class="col-sm-8 col-md-5 text-center-xs">
                                         <p>
@@ -140,12 +123,12 @@
 
                                         <br>
                                         <h1 style="margin: 0; font-size:30px">
-                                            {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
+                                            {{ Auth::user()->full_name }}
                                         </h1>
-                                      <br>
+                                        <br>
 
                                         <p class="lead" style="margin-bottom: 10px;">
-{{--                                            <i class="edit-avatar-hover fa fa-fire"></i> <strong>{{Auth::user()->name}}</strong>--}}
+                                            {{--                                            <i class="edit-avatar-hover fa fa-fire"></i> <strong>{{Auth::user()->name}}</strong>--}}
                                             <strong>
                                                 -
                                             </strong>
@@ -158,11 +141,11 @@
 
                                             Following
                                         </p>
-                                        <p>
-                                            <span class="category-ribbon">
-                                              <p class="edit-avatar-hover"><i class="edit-avatar-hover fa fa-heart-o"></i> {{ Auth::user()->category->name }}</p>
-                                            </span>
-                                        </p>
+
+                                        <span class="category-ribbon">
+                                            <p class="edit-avatar-hover"><i class="edit-avatar-hover fa fa-heart-o"></i> {{ Auth::user()->category->name }}</p>
+                                        </span>
+
                                     </div>
 
 
@@ -170,7 +153,7 @@
                                         <div class="row">
                                             <div class="col-sm-offset-1 col-sm-11">
                                                 <div class="visible-xs visible-sm">
-                                             <br>
+                                                    <br>
                                                 </div>
 
                                                 <h4 style="margin-bottom: 5px;">
@@ -219,94 +202,140 @@
 
 
 
-                            {{----------------------CHANGE AVATAR AND CATEGORIES ------}}
-                <div class="row">
-                    <div class="col-md-3">
-                        <article id="edit_avatar" class="white-content-block">
-                            <h4 class="panel-title"> <i class="fa fa-link"></i> Social Links</h4>
-                            <div class="panel-body">
-                                <h4 class="" name="account[bio]" id="account_bio" >
-                                 <ul>
-                                     <li class="social-links-list"><i class="fa fa-facebook social-links-icon"></i><a href="#" class="social-links-attribute"> My facebook</a></li>
-                                     <li class="social-links-list"><i class="fa fa-twitter social-links-icon"></i><a href="#" class="social-links-attribute">My twitter</a></li>
-                                     <li class="social-links-list"><i class="fa fa-snapchat social-links-icon"></i><a href="#" class="social-links-attribute">My Snapchat</a></li>
-                                 </ul>
-                                </h4>
-                                <br>
-                            </div>
-                        </article>
+                    {{----------------------CHANGE AVATAR AND CATEGORIES ------}}
+                    <div class="row">
+                        <div class="col-md-3">
+                            <article id="edit_avatar" class="white-content-block">
+                                <h4 class="panel-title"> <i class="fa fa-link"></i> Social Links</h4>
+                                <div class="panel-body">
+                                    <h4 class="" name="account[bio]" id="account_bio" >
+                                        <ul>
+                                            <li class="social-links-list"><i class="fa fa-facebook social-links-icon"></i><a href="#" class="social-links-attribute"> My facebook</a></li>
+                                            <li class="social-links-list"><i class="fa fa-twitter social-links-icon"></i><a href="#" class="social-links-attribute">My twitter</a></li>
+                                            <li class="social-links-list"><i class="fa fa-snapchat social-links-icon"></i><a href="#" class="social-links-attribute">My Snapchat</a></li>
+                                        </ul>
+                                    </h4>
+                                    <br>
+                                </div>
+                            </article>
 
-                        {{--------------------Suggestions -----------------}}
-                        <article id="edit_avatar" class="white-content-block">
-                            <h4 class="panel-title"> <i class="fa fa-address-card-o"></i>  Suggestions</h4>
-                            <div class="panel-body">
-                                <h4 class="" name="account[bio]" id="account_bio" >
-                                    <ul>
-                                        <li class="social-links-list">
-                                                    <img src="{{ URL::asset('assets/images/icons/s1.png') }}" alt="">
-                                                    <div class="sgt-text">
-                                                        <h4>Salwa Ghaddar</h4>
-                                                        <span>Graphic Designer</span>
+                            {{--------------------Suggestions -----------------}}
+                            <article id="edit_avatar" class="white-content-block">
+                                <h4 class="panel-title"> <i class="fa fa-address-card-o"></i>  Suggestions</h4>
+                                <div class="panel-body">
+                                    <h4 class="" name="account[bio]" id="account_bio" >
+                                        <ul>
+
+                                            {{--                                        <li class="social-links-list">--}}
+                                            {{--                                            <img src="{{ URL::asset('assets/images/icons/s1.png') }}" alt="">--}}
+                                            {{--                                            <div class="sgt-text">--}}
+                                            {{--                                                <h4>Salwa Ghaddar</h4>--}}
+                                            {{--                                                <span>Graphic Designer</span>--}}
+                                            {{--                                            </div>--}}
+                                            {{--                                            <span><i class="fa fa-eye" style="float: right;"></i></span>--}}
+                                            {{--                                        </li>--}}
+                                            {{--                                        <br><br>--}}
+                                            {{--                                        <hr>--}}
+                                            {{--                                        <li class="social-links-list">--}}
+                                            {{--                                            <img src="{{ URL::asset('assets/images/icons/s1.png') }}" alt="">--}}
+                                            {{--                                            <div class="sgt-text">--}}
+                                            {{--                                                <h4>Salwa Ghaddar</h4>--}}
+                                            {{--                                                <span>Graphic Designer</span>--}}
+                                            {{--                                            </div>--}}
+                                            {{--                                            <span><i class="fa fa-eye" style="float: right;"></i></span>--}}
+                                            {{--                                        </li>--}}
+                                            {{--                                        <br><br>--}}
+                                            {{--                                        <hr>--}}
+                                            {{--                                        <input type="hidden" name="id" value="{{Auth::user()->id}}" />--}}
+                                            @foreach($influencers as $influencer)
+                                                @if($influencer->id != Auth::user()->id)
+                                                    <li class="social-links-list">
+                                                        <img width="35" height="35" style="border-radius: 100px" src="{{asset('storage/influencer_images/'.$influencer->name.'/'.$influencer->profile_picture.'' )}}" alt="">
+                                                        <div class="sgt-text">
+                                                            <h4>{{$influencer->name}}</h4>
+                                                            <span>{{$influencer->category->name}}</span>
+                                                        </div>
+                                                        <span>
+                                                       <a href="http://localhost:8000/en/influencer/{{$influencer->name}}"> <i class="fa fa-eye" style="float: right;"></i></a>
+                                                    </span>
+                                                    </li>
+                                                    <br><br>
+                                                    <hr>
+                                                @endif
+                                                {{--                                            <option value="{{$influencer->id}}">{{$influencer->name}}</option>--}}
+
+                                            @endforeach
+
+                                        </ul>
+                                    </h4>
+                                    <br>
+                                </div>
+                            </article>
+                        </div>
+                        {{-- ----------------- CollaborationsController --------------------------}}
+                        <div class="col-md-9">
+                            <article id="edit_categories" class="white-content-block">
+                                <h4 class="panel-title"><i class="fa fa-handshake-o"></i> Collaborations <span class="glyphicon glyphicon-ok color-green" aria-hidden="true"></span></h4>
+
+                                    @foreach($collaborations as $collaboration)
+                                    <div class="panel-body" style="min-height: 300px;" >
+                                        <div class="post_topbar">
+                                            <div class="usy-dt">
+                                                <img style="margin-top: -2px" width="40" height="40" src="{{asset('storage/business_images/'.$collaboration->business->name.'/'.$collaboration->business->profile_picture.'' )}}" alt="">
+                                                <img style="position: relative;bottom: 3px;right: 23px;" width="40" height="40" src="{{asset('storage/influencer_images/'.Auth::user()->name.'/'.Auth::user()->profile_picture.'' )}}" alt="">
+                                                <div class="usy-name">
+                                                    <h3>{{Auth::user()->name}}</h3>
+                                                    <span><i class="fa fa-clock"></i> {{$collaboration->created_at->diffForHumans()}}</span>
+                                                </div>
+                                                <div class="usy-name">
+                                                    <h3 style="font-weight: 400; font-size: 16px">collaborated with</h3>
+                                                </div>
+                                                <div class="usy-name">
+                                                    <div class="usy-name">
+                                                        <a href="{{route('singleBusinessInInfluencer',$collaboration->business->name)}}"><h3 class="with-collaborator-name">{{$collaboration->business->name}}</h3></a>
                                                     </div>
-                                                    <span><i class="fa fa-eye" style="float: right;"></i></span>
-                                        </li>
-                                        <br><br>
-                                        <hr>
-                                        <li class="social-links-list">
-                                            <img src="{{ URL::asset('assets/images/icons/s1.png') }}" alt="">
-                                            <div class="sgt-text">
-                                                <h4>Salwa Ghaddar</h4>
-                                                <span>Graphic Designer</span>
+                                                </div>
                                             </div>
-                                            <span><i class="fa fa-eye" style="float: right;"></i></span>
-                                        </li>
-                                        <br><br>
-                                        <hr>
-                                        <li class="social-links-list">
-                                            <img src="{{ URL::asset('assets/images/icons/s1.png') }}" alt="">
-                                            <div class="sgt-text">
-                                                <h4>Salwa Ghaddar</h4>
-                                                <span>Graphic Designer</span>
+                                            <div class="ed-opts">
+                                                <a  href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
+                                                <ul class="ed-options">
+                                                    <li><a href="#" title="">Edit Post</a></li>
+                                                    <li><a href="#" title="">Unsaved</a></li>
+                                                    <li><a href="#" title="">Unbid</a></li>
+                                                    <li><a href="#" title="">Close</a></li>
+                                                    <li><a href="#" title="">Hide</a></li>
+                                                </ul>
                                             </div>
-                                            <span><i class="fa fa-eye" style="float: right;"></i></span>
-                                        </li>
-                                        <br><br>
-                                        <hr>
+                                        </div>
+                                        <div class="epi-sec">
+                                            <ul class="descp">
+                                                <li><span><i class="fa fa-heart"></i> {{$collaboration->influencer->category->name}}</span></li>
+                                                <li><span><i class="fa fa-globe"></i> {{$collaboration->influencer->country->name}}</span></li>
+                                            </ul>
 
-                                    </ul>
-                                </h4>
-                                <br>
-                            </div>
-                        </article>
+                                        </div>
+                                        <div class="job_descp">
+                                            <div class=" w-50 ml-0 mr-0 mx-auto" >
+                                                <img style=" max-width:500px; max-height:450px" src="{{asset('storage/collaboration_images/'.$collaboration->influencer->name.'/'.$collaboration->collaboration_image.'' )}}">
+                                            </div>
+                                        </div>
+                                        <div class="collaboration-description">
+                                            <p>{{$collaboration->description}}</p>
+                                        </div>
+                                    </div>
+                                    @endforeach
+
+                            </article>
+                        </div>
                     </div>
-                        {{-- ----------------- Collaborations --------------------------}}
-                    <div class="col-md-9">
-                        <article id="edit_categories" class="white-content-block">
-                            <h4 class="panel-title"><i class="fa fa-handshake-o"></i> Collaborations <span class="glyphicon glyphicon-ok color-green" aria-hidden="true"></span></h4>
-                            <div class="panel-body" style="min-height: 300px;">
-
-                            </div>
-                        </article>
-                    </div> </div>
 
                 </div>
             </section>
+        </div>
+    </div>
 
+@endsection
 
-        <!--=================================
-            End of Main content -->
+@section('js')
 
-
-<!--=================================
-footer -->
-
-@include('layouts.Influencers.footer-influencers')
-
-<!--=================================
-end of footer -->
-
-@include('layouts.Influencers.footer-scripts-influencers')
-
-</body>
-
-</html>
+@endsection

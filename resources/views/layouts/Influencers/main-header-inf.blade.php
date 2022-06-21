@@ -18,20 +18,20 @@ header start-->
             <nav>
                 <ul>
                     <li>
-                        <a href="#" title="">
+                        <a href="{{route('Influencer-home')}}" title="">
                             <span><img src="{{ URL::asset('assets/images/icons/icon1.png') }}" alt=""></span>
                             {{trans('mainpage_Influencer.home')}}
                         </a>
                     </li>
                     <li>
-                        <a href="#" title="">
+                        <a href="{{route('advanced-search.index')}}" title="">
                             <span><img src="https://img.icons8.com/fluency-systems-filled/48/ffffff/advanced-search.png" width="18" height="18"/></span>
                             {{trans('mainpage_Influencer.advanced-search')}}
                         </a>
 
                     </li>
                     <li>
-                        <a href="#" title="">
+                        <a href="{{route('Influencer-collaborations')}}" title="">
                             <span><img src="{{ URL::asset('assets/images/icons/icon10.png') }}" width="18" height="14" alt=""></span>
                             {{trans('mainpage_Influencer.collaborations')}}
                         </a>
@@ -43,7 +43,7 @@ header start-->
                             {{trans('mainpage_Influencer.profile')}}
                         </a>
                         <ul>
-                            <li><a href="{{route('edit-profile-influencer')}}" title="">Edit Your Profile</a></li>
+                            <li><a href="{{route('edit-profile.index')}}" title="">Edit Your Profile</a></li>
                             <li><a href="{{route('view-profile-influencer')}}" title="">View Your Profile</a></li>
                         </ul>
                     </li>
@@ -51,51 +51,52 @@ header start-->
 
                     <li>
                         <a href="#" title="" class="not-box-open">
-                            <span><img src="{{ URL::asset('assets/images/icons/icon7.png') }}" alt=""></span>
-                            {{trans('mainpage_Influencer.notifications')}}
-                        </a>
+                            <span><i class="fa fa-bell" style="font-size: 17px"></i></span>
+                            @if(Auth::user()->unreadnotifications->count() > 0)
+                                <span style="margin-top: 5px" class="badge badge-danger">{{Auth::user()->unreadnotifications->count()}}</span>
+                            @else
+                                <span style="margin-top: 5px" class="badge badge-secondary">0</span>
+                            @endif
+
+                              </a>
                         <div class="notification-box noti" id="notification">
                             <div class="nt-title">
                                 <h4>Setting</h4>
                                 <a href="#" title="">Clear all</a>
                             </div>
                             <div class="nott-list">
-                                <div class="notfication-details">
-                                    <div class="noty-user-img">
-                                        <img src="{{ URL::asset('assets/images/icons/ny-img1.png') }}" alt="">
+                                @foreach(Auth::user()->notifications as $notification)
+                                    @if($notification->type == 'App\Notifications\requestsRecieved')
+                                    <div class="notfication-details">
+                                        <div class="noty-user-img">
+                                            <img style="border-radius: 100px" src="{{asset('storage/business_images/'.$notification->data['business'].'/'.$notification->data['profile_picture'].'' )}}" alt="">
+                                        </div>
+                                        <div class="notification-info">
+                                            <h3><a href="#" title="">{{$notification->data['business']}}</a>  Requested information.</h3>
+
+                                            <span style="font-size: 10px">{{$notification->created_at->diffForHumans()}}</span>
+
+                                                <a data-toggle="modal"
+                                                   data-target="#replyToRequest/{{$notification->id}}"
+                                                   class="btn btn-success confirm-btn">Confirm</a>
+                                                <a class="btn btn-danger deny-btn">Deny</a>
+                                        </div>
+                                        {{$notification->markasread()}}
                                     </div>
-                                    <div class="notification-info">
-                                        <h3><a href="#" title="">Ali Khalifeh</a>  Requested information.</h3>
-                                        <span>2 min ago</span>
-                                    </div>
-                                </div>
-                                <div class="notfication-details">
-                                    <div class="noty-user-img">
-                                        <img src="{{ URL::asset('assets/images/icons/ny-img1.png') }}" alt="">
-                                    </div>
-                                    <div class="notification-info">
-                                        <h3><a href="#" title="">Abbas Gharib</a> Requested Collaboration.</h3>
-                                        <span>2 min ago</span>
-                                    </div>
-                                </div>
-                                <div class="notfication-details">
-                                    <div class="noty-user-img">
-                                        <img src="{{ URL::asset('assets/images/icons/ny-img1.png') }}" alt="">
-                                    </div>
-                                    <div class="notification-info">
-                                        <h3><a href="#" title="">Salwa Ghaddar</a>  Requested information.</h3>
-                                        <span>2 min ago</span>
-                                    </div>
-                                </div>
-                                <div class="notfication-details">
-                                    <div class="noty-user-img">
-                                        <img src="{{ URL::asset('assets/images/icons/ny-img1.png') }}" alt="">
-                                    </div>
-                                    <div class="notification-info">
-                                        <h3><a href="#" title="">Ahmad Fahes</a> Requested information.</h3>
-                                        <span>2 min ago</span>
-                                    </div>
-                                </div>
+
+                                    @elseif($notification->type == 'App\Notifications\CollaborationAnswer')
+                                        <div class="notfication-details">
+                                            <div class="noty-user-img">
+                                                <img style="border-radius: 100px" src="{{asset('storage/business_images/'.$notification->data['business_username'].'/'.$notification->data['business_profile_picture'].'' )}}" alt="">
+                                            </div>
+                                            <div class="notification-info">
+                                                <h3><a href="#" title="">{{$notification->data['business_username']}}</a>  @if($notification->data["collaboration_answer"] == 1) Accepted @else Rejected @endif your collaboration request</h3>
+                                                <span style="font-size: 10px">{{$notification->created_at->diffForHumans()}}</span>
+                                            </div>
+                                            {{$notification->markasread()}}
+                                        </div>
+                                    @endif
+                                @endforeach
                                 <div class="view-all-nots">
                                     <a href="#" title="">View All Notification</a>
                                 </div>
@@ -132,7 +133,7 @@ header start-->
             </div>
             <div class="user-account">
                 <div class="user-info">
-                    <img src="{{ URL::asset('assets/images/icons/user.png') }}" alt="">
+                    <img style="" width="30" height="30"  src="{{asset('storage/influencer_images/'.Auth::user()->name.'/'.Auth::user()->profile_picture.'' )}}" alt="">
                     <a href="#" title="">{{ Auth::user()->name }}</a>
                     <i class="fa fa-arrow-down"></i>
                 </div>

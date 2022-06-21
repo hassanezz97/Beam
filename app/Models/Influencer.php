@@ -10,7 +10,7 @@ class Influencer extends Authenticatable
 {
     use Notifiable;
     protected $fillable = [
-        'name', 'email', 'password','first_name','last_name','gender_id','mobile','country_id','city','profile_picture','category_id','date_of_birth','instagram_username','headline',
+        'name', 'email', 'password','full_name','gender_id','mobile','country_id','city','profile_picture','category_id','date_of_birth','instagram_username','headline',
     ];
     protected $hidden = [
         'password', 'remember_token',
@@ -30,5 +30,21 @@ class Influencer extends Authenticatable
     public function Gender()
     {
         return $this->belongsTo('App\Models\Gender', 'gender_id');
+    }
+    public function Request()
+    {
+        return $this->hasMany('App\Models\Request','request_id');
+    }
+    public function Information()
+    {
+        return $this->hasMany('App\Models\Information','information_id');
+    }
+    public function ratings()
+    {
+        return $this->hasMany('App\Models\Rating');
+    }
+    public function Collaborations()
+    {
+        return $this->hasMany('App\Models\Collaboration');
     }
 }

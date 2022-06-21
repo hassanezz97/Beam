@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    @include('registration.head-registration')
+    @include('layouts.registration.head-registration')
 </head>
 
 <body>
@@ -16,14 +16,14 @@ preloader -->
     <!--=================================
 preloader -->
 
-@include('registration.registration-header')
+@include('layouts.registration.registration-header')
 
 <!--=================================
  Main content -->
     <!-- main-content -->
     <div class="content-wrapper col-xl-10">
 
-        @yield('page-header')
+{{--        @yield('page-header')--}}
 
 
         @yield('content')
@@ -34,7 +34,7 @@ preloader -->
             <!--=================================
  footer -->
 
-            @include('registration.registration-footer')
+            @include('layouts.registration.registration-footer')
         </div><!-- main content wrapper end-->
 </div>
 
@@ -43,7 +43,7 @@ preloader -->
 <!--=================================
 footer -->
 
-@include('registration.footer-scripts')
+@include('layouts.registration.footer-registration-scripts')
 
 </body>
 

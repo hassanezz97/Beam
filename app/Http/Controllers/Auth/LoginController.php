@@ -45,6 +45,7 @@ class LoginController extends Controller
     public function login(Request $request){
 
         if (Auth::guard($this->chekGuard($request))->attempt(['email' => $request->email, 'password' => $request->password])) {
+            toastr()->success('You were logged in successfully!');
             return $this->redirect($request);
         }
         else{
@@ -59,7 +60,7 @@ class LoginController extends Controller
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
-
+        toastr()->success('You were logged out successfully!');
         return redirect('/');
 
     }

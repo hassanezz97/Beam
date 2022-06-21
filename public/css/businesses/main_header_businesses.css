@@ -1,24 +1,24 @@
 header {
-    background-color: #51C4D0 !important;
+    background-color: #f27684 !important;
 }
 
 #footer{
-    background-color: #51C4D0 !important;
+    background-color: #f27684 !important;
 }
 
 .search-bar form button i{
-    color: #51C4D0 !important;
+    color: #f27684 !important;
 }
 .user-account {
 
-    border-left: 1px solid #43a5ad !important;
-    border-right: 1px solid #43a5ad !important;
+    border-left: 1px solid #c75761 !important;
+    border-right: 1px solid #c75761 !important;
 
 }
 @media (max-width: 1200px){
 header nav {
 
-    background-color: #388a91 !important;
+    background-color: #f27684 !important;
 
 }
 }

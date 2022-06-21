@@ -1,0 +1,56 @@
+/*-----------------Influencer Notifications------------------*/
+.story-section,.post-section,.additional-questions-section,.additional-comments-section{
+    margin-top: 25px;
+}
+.story-label,.post-label,.additional-comments-label,.additional-questions-label{
+    margin-bottom: 5px;
+}
+.modal-header{
+    margin-top: -1px;
+}
+
+.dollar-div{
+    background-color: #81acdb;
+    color: white;
+}
+.confirm-btn:hover{
+    background-color: #D39309 ;
+    border-color: #D39309;
+}
+.confirm-btn:active{
+    background-color: #F8C760 !important;
+}
+
+
+/*---------Business Notifications-----------*/
+
+.modal-header .view-information-modal-header{
+    background-color: #A9DBE9 !important;
+}
+.dollar-div-view-information{
+    background-color: #F5937A;
+    color: white;
+}
+.view-info-btn{
+    background-color: #2F9AB7;
+    color: white !important;
+    border-color: #A9DBE9;
+}
+.view-info-btn:hover{
+    background-color: #A9DBE9;
+    border-color: #A9DBE9;
+}
+.view-info-btn:active{
+    background-color: #2F9AB7 !important;
+    border-color: #A9DBE9;
+}
+.close-info-modal{
+    background-color: #FF4949;
+    border-color: #FF4949;
+}
+
+/*------------Single influencer in business----------*/
+.request-information-single-influencer{
+
+}
+

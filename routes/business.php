@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+    Route::get('/business/register', 'HomeController@registerBusiness')->name('register-bus');
+    Route::get('/businesses', 'HomeController@visitBusiness')->middleware('guest')->name('businesses');
+
+
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
@@ -21,10 +25,24 @@ Route::group(
     ], function () {
 
     //==============================dashboard============================
-    Route::get('/business/home', function () {
-        return view('businesses.home-business');
+//    Route::get('/business/home', function () {
+//        return view('businesses.home-business');
+//    });
+    Route::group(['namespace' => 'AdvancedSearch'], function () {
+        Route::resource('advanced-search', 'AdvancedSearchController');
+    });
+    Route::group(['namespace' => 'Business'], function () {
+        Route::get('/business/home', 'BusinessHomePageController@index')->name('business_home');
+        Route::get('/business/collaborations', 'CollaborationBusinessController@index')->name('index-collaboration');
+        Route::get('/business/acceptCollaboration', 'CollaborationBusinessController@acceptCollaboration')->name('accept-collaboration');
+        Route::get('/business/profile', 'BusinessHomePageController@viewProfileBusiness')->name('view-business-profile');
+    });
+    Route::group(['namespace' => 'SingleInfluencer'], function () {
+        Route::get('/sendrequest', 'SingleInfluencerInBusinessController@sendRequest')->name('sendRequest');
+        Route::get('/user/{name}', 'SingleInfluencerInBusinessController@index')->name('singleInfluencerInBusiness');
+
     });
 
+//    Route::get('/SingleInfluencerBusiness', 'HomeController@SingleInfluencerInBusiness')->name('single-bus-inf');
+
 });
-Route::get('/business/register', 'HomeController@registerBusiness')->name('register-bus');
-Route::get('/businesses', 'HomeController@visitBusiness')->middleware('guest')->name('businesses');

@@ -3,7 +3,7 @@
 
 <head>
 
-    <livewire:styles />
+    @livewireStyles
 
     @include('layouts.registration.head-registration')
 </head>
@@ -54,5 +54,5 @@ footer -->
 
 
 </body>
-<livewire:scripts />
+@livewireScripts
 </html>

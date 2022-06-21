@@ -62,7 +62,7 @@
                 <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
                 <span class="align-middle d-sm-inline-block d-none">Previous</span>
             </button>
-            <button class="btn btn-primary nextBtn pull-right" wire:click="firstStepSubmit" type="button">
+            <button class="btn btn-primary nextBtn pull-right"  wire:click="firstStepSubmit" type="button">
                 <span class="align-middle d-sm-inline-block d-none me-sm-1 me-0">Next</span> <i class="bx bx-chevron-right bx-sm me-sm-n2"></i>
             </button>
         </div>

@@ -5,18 +5,18 @@
     </div>
     <div class="row g-3">
         <div class="col-sm-6">
-            <label class="form-label" for="multiStepsFirstName">First Name</label>
-            <input type="text" id="multiStepsFirstName" wire:model="first_name" name="multiStepsFirstName" class="form-control @error('first_name') is-invalid @enderror" placeholder="John" />
-            @error('first_name') <span class="error">{{ $message }}</span> @enderror
+            <label class="form-label" for="multiStepsFirstName">Full Name</label>
+            <input type="text" id="multiStepsFirstName" wire:model="full_name" name="multiStepsFirstName" class="form-control @error('full_name') is-invalid @enderror" placeholder="John" />
+            @error('full_name') <span class="error">{{ $message }}</span> @enderror
         </div>
-        <div class="col-sm-6">
-            <label class="form-label" for="multiStepsLastName">Last Name</label>
-            <input type="text" id="multiStepsLastName" wire:model="last_name" name="multiStepsLastName" class="form-control @error('last_name') is-invalid @enderror" placeholder="Doe" />
-            @error('last_name') <span class="error">{{ $message }}</span> @enderror
-        </div>
+{{--        <div class="col-sm-6">--}}
+{{--            <label class="form-label" for="multiStepsLastName">Last Name</label>--}}
+{{--            <input type="text" id="multiStepsLastName" wire:model="last_name" name="multiStepsLastName" class="form-control @error('last_name') is-invalid @enderror" placeholder="Doe" />--}}
+{{--            @error('last_name') <span class="error">{{ $message }}</span> @enderror--}}
+{{--        </div>--}}
         <div class="col-sm-6">
             <label class="form-label" for="multiStepsState">Gender</label>
-            <select id="multiStepsState" wire:model="gender" class="select2 form-select @error('gender') is-invalid @enderror" data-allow-clear="true">
+            <select id="" wire:model="gender" class="select2 form-select @error('gender') is-invalid @enderror" data-allow-clear="true">
                 <option value="">Select</option>
                 @foreach($Genders as $Gender)
                     <option value="{{$Gender->id}}">{{$Gender->name}}</option>
@@ -37,7 +37,7 @@
 
         <div class="col-sm-6">
             <label class="form-label" for="multiStepsState">Country</label>
-            <select id="multiStepsState" wire:model="country" class="select2 form-select @error('country') is-invalid @enderror" data-allow-clear="true">
+            <select id="" wire:model="country" class="select2 form-select @error('country') is-invalid @enderror" data-allow-clear="true">
                 <option value="">Select</option>
                 @foreach($Countries as $Country)
                     <option value="{{$Country->id}}">{{$Country->name}}</option>

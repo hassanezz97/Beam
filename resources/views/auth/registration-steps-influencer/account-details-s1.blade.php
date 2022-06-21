@@ -13,7 +13,7 @@
             <label class="form-label" for="multiStepsEmail">{{ __('E-Mail Address') }}</label>
             <input
                 type="email"
-                id="multiStepsEmail"
+                id=""
                 class="form-control @error('email') is-invalid @enderror"
                 wire:model="email"
                 placeholder="john.doe@email.com"
@@ -24,6 +24,7 @@
             />
             @error('email') <span class="error">{{ $message }}</span> @enderror
         </div>
+
         <div class="col-sm-6 form-password-toggle">
             <label class="form-label" for="multiStepsPass">{{ __('Password') }}</label>
             <div class="input-group input-group-merge">

@@ -30,7 +30,7 @@ class CategoriesTableSeeder extends Seeder
             'Product/Service',
             'Gamer',
             'Restaurant',
-            'Beauty, cosmetic & personal care',
+            'Beauty & personal care',
             'Photographer',
             'Shopping & retail',
             'Video creator',

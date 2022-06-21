@@ -25,18 +25,18 @@ Route::group(
 
 
         //////////////////// Influencers ////////////////////////////////////
-            Route::get('/influencer/home', 'HomeController@visitInfluencersHome')->name('home');
+//            Route::get('/influencer/home', 'HomeController@visitInfluencersHome')->name('home');
 //            Route::get('/influencer/profile', 'HomeController@setupProfile')->name('profile');
 
 //        //////////////////// Business /////////////////////////////////////////
 //            Route::get('/business/home', 'HomeController@visitBusinessHome')->name('home-bus');
 //            Route::get('/business/profile', 'HomeController@setupBusinessProfile')->name('profile-bus');
 
-        //////////////////////// Search //////////////////////////////////
-            Route::get('/influencer/advanced-search', 'HomeController@advancedSearch')->name('advSearch');
-            Route::get('/influencer/search-influencer', 'HomeController@searchInfluencer')->name('searchInfluencer');
-            Route::get('/influencer/search-business', 'HomeController@searchBusiness')->name('searchBusiness');
-            Route::get('/influencer/search-username', 'HomeController@searchUsername')->name('searchUsername');
+//        //////////////////////// Search //////////////////////////////////
+//            Route::get('/influencer/advanced-search', 'HomeController@advancedSearch')->name('advSearch');
+//            Route::get('/influencer/search-influencer', 'HomeController@searchInfluencer')->name('searchInfluencer');
+//            Route::get('/influencer/search-business', 'HomeController@searchBusiness')->name('searchBusiness');
+//            Route::get('/influencer/search-username', 'HomeController@searchUsername')->name('searchUsername');
 
 
 
@@ -44,7 +44,7 @@ Route::group(
 //    Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
 });
-
+Auth::routes();
 //////////////////////////// Home pages ///////////////////////////
 Route::get('/', 'HomeController@home')->middleware('guest')->name('influencer');
 
@@ -54,13 +54,15 @@ Route::get('/influencer/register', 'HomeController@registerInfluencer')->name('r
 // authentication
 
 Route::group(['namespace' => 'Auth'], function () {
+//    Route::get('/influencer/register2', 'InfluencerRegistration@index')->name('register-inf');
+    Route::get('/influencer/confirmRegistration', 'InfluencerRegistration@register')->name('confirm-register-inf');
     Route::post('/','LoginController@login')->name('login');
     Route::get('/logout/{type}', 'LoginController@logout')->name('logout');
 });
 
 //Route::get('/influencer/email-verification', 'HomeController@verification')->name('verification');
 //['verify'=>true]
-//Auth::routes();
+
 
 
 

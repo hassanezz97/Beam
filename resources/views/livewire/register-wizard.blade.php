@@ -55,7 +55,7 @@
                 </div>
             </div>
             <div class="bs-stepper-content">
-                <form id="multiStepsForm">
+                <form >
                     <!-- Account Details -->
                     @include('auth.registration-steps-influencer.account-details-s1')
                     {{---------------------------------Email Verification-----------------------------}}

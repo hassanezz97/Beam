@@ -1,8 +1,4 @@
-@extends('influencers.search.main-search')
-@section('tab-title')
-    Advanced Search
-@endsection
-@section('search-bar')
+
     <div class="search-form big-search-wrapper search-wrapper responsive">
         <form class="new_is" id="adv_is_new_is" action="" accept-charset="UTF-8" method="get">
 
@@ -211,5 +207,3 @@
             </p>
         </form>
     </div>
-
-@endsection

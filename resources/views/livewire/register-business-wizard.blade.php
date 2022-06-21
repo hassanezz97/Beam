@@ -55,7 +55,8 @@
                 </div>
             </div>
             <div class="bs-stepper-content">
-                <form id="multiStepsForm">
+
+                <form id="multiStepsForm" enctype="multipart/form-data">
                     <!-- Account Details -->
                     @include('auth.registration-steps-business.account-details-s1')
                     {{---------------------------------Email Verification-----------------------------}}
@@ -65,6 +66,7 @@
                     {{---------------------------------Profile Detailsaccount-details-s1.blade.php-----------------------------}}
                     @include('auth.registration-steps-business.profile-details-s3')
                 </form>
+
             </div>
         </div>
     </div>

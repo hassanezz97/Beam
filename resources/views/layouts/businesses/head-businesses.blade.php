@@ -1,6 +1,5 @@
 <!-- Title -->
 <title>@yield("title")</title>
-
 <link rel="icon"  href="{{ URL::asset('assets/images/logo/favicon2.png') }}">
 
 <!-- Font -->

@@ -7,18 +7,21 @@ use App\Models\Country;
 use App\Models\Gender;
 use App\Models\Influencer;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Notifications\VerifyEmail;
 use Livewire\WithFileUploads;
+use App\Http\Controllers\Auth\LoginController;
 
 class RegisterWizard  extends Component
 {
+    use AuthorizesRequests;
     use WithFileUploads;
     public $currentStep = 1;
-    public $name, $email, $password,$password_confirmation,$first_name,$last_name,$gender,$mobile,$country,$city,$category,$date_of_birth,$instagram_username,$headline;
+    public $name, $email, $password,$password_confirmation,$full_name,$gender,$mobile,$country,$city,$category,$date_of_birth,$instagram_username,$headline;
     public $profile_picture;
     public $successMessage = '';
 
@@ -31,19 +34,20 @@ class RegisterWizard  extends Component
             'Categories' => Category::all(),
         ]);
     }
+    public function mount(){
+//        $this->middleware('guest');
+    }
 
     public function firstStepSubmit()
     {
+
         $validatedData = $this->validate([
             'name' => 'required|string|max:255|unique:influencers|alpha_num',
             'email' => 'required|string|email|max:255|unique:influencers',
             'password' => 'required|string|confirmed|min:8',
             'password_confirmation' => 'required|string',
         ]);
-
-//        event(new Registered($user));
-//        Auth::login($user);
-       $this->currentStep = 2;
+        $this->currentStep = 2;
 
     }
 
@@ -57,14 +61,13 @@ class RegisterWizard  extends Component
 //        else{
 //            $this->currentStep = 4;
 //        }
-        $this->currentStep = 2;
+//        $this->currentStep = 2;
     }
 
     public function secondStepSubmit()
     {
         $validatedData = $this->validate([
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
+            'full_name' => 'required|string|max:255',
             'gender' => 'required|string',
             'mobile' => 'required|string',
             'country' => 'required|string',
@@ -78,14 +81,16 @@ class RegisterWizard  extends Component
     public function submitForm()
     {
          $profile_picture = $this->profile_picture;
-        $profile_picture->storeAs($this->name, $profile_picture->getClientOriginalName(), $disk = 'influencer_images');
+        if (!empty($profile_picture)){
+            $profile_picture->storeAs($this->name, $profile_picture->getClientOriginalName(), $disk = 'influencer_images');
+        }
+
 
         $user= Influencer::create([
             'name' => $this->name,
             'email' => $this->email,
             'password' => Hash::make($this->password),
-            'first_name' => $this->first_name,
-            'last_name' => $this->last_name,
+            'full_name' => $this->full_name,
             'gender_id' => $this->gender,
             'country_id' => $this->country,
             'mobile' => $this->mobile,
@@ -96,13 +101,15 @@ class RegisterWizard  extends Component
             'instagram_username' => $this->instagram_username,
             'headline' => $this->headline,
         ]);
-        event(new Registered($user));
+//        event(new Registered($user));
+
         Auth::login($user);
-        $this->successMessage = 'Product Created Successfully.';
+        return redirect()->to(RouteServiceProvider::Influencer);
+//        $this->successMessage = 'Product Created Successfully.';
 
-        $this->clearForm();
+//        $this->clearForm();
 
-        $this->currentStep = 1;
+//        $this->currentStep = 1;
     }
 
     public function back($step)
@@ -115,7 +122,6 @@ class RegisterWizard  extends Component
         $this->name = '';
         $this->email = '';
         $this->password = '';
-        $this->stock = '';
-        $this->status = 1;
+
     }
 }

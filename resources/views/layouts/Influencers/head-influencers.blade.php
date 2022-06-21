@@ -1,7 +1,6 @@
 <!-- Title -->
 <title>@yield("title")</title>
 
-
 <link rel="icon"  href="{{ URL::asset('assets/images/logo/favicon2.png') }}">
 <!-- Font -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:200,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900">

@@ -19,8 +19,7 @@ class CreateInfluencersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('first_name');
-            $table->string('last_name');
+            $table->string('full_name');
             $table->bigInteger('gender_id')->unsigned();
             $table->string('mobile');
             $table->bigInteger('country_id')->unsigned();

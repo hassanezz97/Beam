@@ -12,12 +12,20 @@
                                         <span class="custom-option-body">
                                             <h4 class="mb-2">Profile picture</h4>
                                             <p class="mb-2">
-                                                <img class="img-circle avatar-image" id="output" style="max-width: 100%" src="https://marmont-web-production.s3.amazonaws.com/external/influence_avatar.png" />
+{{--                                                <img class="img-circle avatar-image" id="output" style="max-width: 100%" src="https://marmont-web-production.s3.amazonaws.com/external/influence_avatar.png" />--}}
+                                                 @if ($this->profile_picture)
+                                                    <img src="{{ $this->profile_picture->temporaryUrl() }}" style="max-width: 100%" alt="" class="img-circle avatar-image">
+                                                @else
+                                                    <img class="img-circle avatar-image" id="output" style="max-width: 100%" src="https://marmont-web-production.s3.amazonaws.com/external/influence_avatar.png" />
+                                                @endif
+
                                             </p>
                                             <form id="avatar-form" class="text-center" enctype="multipart/form-data" action="/influencers/avatar" accept-charset="UTF-8" method="post"><input type="hidden" name="_method" value="put" />
                                                     <input type="hidden" name="authenticity_token" value="V7pV2wjbPLRLIm6VzEdsjDxWmjHs6EG0E1jEbc1n+Hf/ZFWMeMlc7ktaQpr94jUha7gPT5ERFma8DRJ8IMexsw==" />
-                                                    <input style="display: none" type="file" name="profile-picture" wire:model="profile_picture"  accept="image/*" id="avatar" class="inputfile" onchange="loadFile(event)" />
-                                                    <label class="btn btn-xs-block our-button avatar-button" for="avatar">Change Avatar</label>
+                                                    <input style="display: none" type="file" name="profile_picture" wire:model="profile_picture"  accept="image/*" id="avatar" class="inputfile" onchange="loadFile(event)" />
+                                                    <label class="btn btn-xs-block our-button avatar-button" for="avatar">Change Avatar</label><br>
+                                                     <div wire:loading wire:target="profile_picture" wire:key="profile_picture"><i class="fa fa-spinner fa-spin mt-2 ml-2" style="color:red;"></i> Uploading</div>
+
                                             </form>
 
                                             <span class="d-flex justify-content-center">
@@ -79,9 +87,9 @@
         </div>
     </div>
 </div>
-<script>
-    var loadFile = function(event) {
-        var image = document.getElementById('output');
-        image.src = URL.createObjectURL(event.target.files[0]);
-    };
-</script>
+{{--<script type="text/javascript">--}}
+{{--    var loadFile = function(event) {--}}
+{{--        var image = document.getElementById('output');--}}
+{{--        image.src = URL.createObjectURL(event.target.files[0]);--}}
+{{--    };--}}
+{{--</script>--}}

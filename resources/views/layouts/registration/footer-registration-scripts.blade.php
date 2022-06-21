@@ -40,7 +40,7 @@
 <!-- Pricing Modal JS-->
 <!-- END: Pricing Modal JS-->
 <!-- BEGIN: Page JS-->
-<script src="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo/assets/js/pages-auth-multisteps.js"></script>
+<script src="{{ URL::asset('js/registration/multiStepValidation.js') }}"></script>
 <!-- END: Page JS-->
 
 
