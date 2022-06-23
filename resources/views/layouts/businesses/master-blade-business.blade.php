@@ -11,34 +11,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600&display=swap" rel="stylesheet">
     @include('layouts.businesses.head-businesses')
 </head>
-
 <body>
-
-
-@include('layouts.businesses.main-header-business')
-
+    @include('layouts.businesses.main-header-business')
 
 <!--=================================
  Main content -->
 <div class="main-business-div" style="min-height: 600px;">
     @yield('content')
-
 </div>
-
 <!--=================================
     End of Main content -->
-
-
 <!--=================================
 footer -->
-
-@include('layouts.businesses.footer-business')
-
+    @include('layouts.businesses.footer-business')
 <!--=================================
 end of footer -->
-
-@include('layouts.businesses.footer-scripts-business')
-
+    @include('layouts.businesses.footer-scripts-business')
 </body>
-
 </html>

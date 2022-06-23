@@ -40,16 +40,40 @@
     font-weight: 600;
 }
 
+/*delete modal*/
+.delete-modal{
+    background-color: red;
+    color: white;
+}
+.delete-modal-btn{
+    background-color: red;
+    color: white;
+    border-color: red;
+}
+
+.delete-modal-btn:hover{
+    background-color: red;
+    color: white;
+    border-color: red;
+}
 /** rating **/
 
+.rating-div{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 div.stars {
     display: inline-block;
+
 }
 
 input.star { display: none; }
 
 label.star {
-
+    padding: 3px;
 }
 input.star:checked ~ label.star:before {
     content: '\f005';

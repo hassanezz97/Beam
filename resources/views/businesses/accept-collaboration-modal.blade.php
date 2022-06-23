@@ -1,5 +1,6 @@
 <!-- Accept Collaboration Modal -->
 @foreach(Auth::user()->notifications as $notification)
+    @if($notification->type == 'App\Notifications\CollaborationRequest')
     <!---------------------- Modal------------------->
     <div class="modal fade" id="AcceptInvitation/{{$notification->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -34,4 +35,5 @@
                 </div>
             </div>
         </div>
+    @endif
 @endforeach

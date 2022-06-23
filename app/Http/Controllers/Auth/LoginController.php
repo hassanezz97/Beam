@@ -49,6 +49,7 @@ class LoginController extends Controller
             return $this->redirect($request);
         }
         else{
+            toastr()->error('Error occured, Please try again!');
             return view('home_page.influencer');
         }
 

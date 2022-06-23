@@ -29,6 +29,7 @@ Route::group(
         Route::resource('/influencer/edit-profile', 'InfluencerProfileController');
         Route::get('/influencer/collaborations', 'CollaborationsController@index')->name('Influencer-collaborations');
         Route::get('/influencer/collaborationsent', 'CollaborationsController@collaborateWithBusiness')->name('Influencer-send-collaborations');
+        Route::get('/influencer/home/delete-request', 'InfluencerHomePageController@deleteNotification')->name('delete-request');
     });
 //    Route::get('/influencer/edit-profile', 'HomeController@setupProfile')->name('edit-profile-influencer');
     //////////////////////// Search //////////////////////////////////

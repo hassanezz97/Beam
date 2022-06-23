@@ -20,7 +20,8 @@ class BusinessHomePageController extends Controller
     }
 
     public function viewProfileBusiness(){
+        $suggestions = Influencer::inRandomOrder()->limit(3)->get()->except(Auth::id()) ;
         $collaborations = Collaboration::where('influencer_id',Auth::user()->id)->where('is_accepted',1)->get();
-        return view('businesses.view-profile-business',compact('collaborations'));
+        return view('businesses.view-profile-business',compact('collaborations','suggestions'));
     }
 }

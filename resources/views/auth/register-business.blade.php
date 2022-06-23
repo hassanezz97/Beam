@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<title>
+    Register as Business
+</title>
 <head>
 
     <livewire:styles />

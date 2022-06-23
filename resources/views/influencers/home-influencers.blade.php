@@ -33,7 +33,7 @@
                                         </div>
                                         <div class="user-specs">
                                             <h3>{{ Auth::user()->full_name }}</h3>
-                                            <div style="justify-content: center; margin: auto">
+                                            <div class="rating-div" >
                                                 <input  @if($ratings==5) checked @endif   class="star star-5" name="rating" value="5" id="star-5" type="radio" disabled/>
                                                 <label class="star star-5 " for="star-5"></label>
                                                 <input @if($ratings==4) checked @endif class="star star-4" name="rating" value="4" id="star-4" type="radio"  disabled/>
@@ -70,17 +70,16 @@
                                         <i class="la la-ellipsis-v"></i>
                                     </div>
                                     <div class="suggestions-list">
-{{--                                        @foreach($suggestions as $suggestion)--}}
-
-{{--                                        @endforeach--}}
-                                        <div class="suggestion-usd">
-                                            <img src="{{ URL::asset('assets/images/icons/s1.png') }}" alt="">
-                                            <div class="sgt-text">
-                                                <h4>Salwa Ghaddar</h4>
-                                                <span>Graphic Designer</span>
+                                            @foreach($suggestions as $suggestion)
+                                            <div class="suggestion-usd">
+                                                <img style="width: 100%; height: 35px; width: 35px" src="{{asset('storage/influencer_images/'.$suggestion->name.'/'.$suggestion->profile_picture.'' )}}" alt="">
+                                                <div class="sgt-text">
+                                                    <h4>{{$suggestion->full_name}}</h4>
+                                                    <span>{{$suggestion->category->name}}</span>
+                                                </div>
+                                                <span><a href="{{route('singleInfluencer',$suggestion->name)}}"><i class="fa fa-eye"></i></a></span>
                                             </div>
-                                            <span><i class="fa fa-eye"></i></span>
-                                        </div>
+                                            @endforeach
                                         <div class="view-more">
                                             <a href="#" title="">View More</a>
                                         </div>
@@ -115,7 +114,9 @@
                                         <div class="job-status-bar">
                                             <div class="nott-list">
                                                 @foreach($requests as $request)
+
                                                     <div class="notfication-details">
+
                                                         <div class="noty-user-img">
                                                             <img style="border-radius: 100px"
                                                                  src="{{asset('storage/business_images/'.$request->business->name.'/'.$request->business->profile_picture.'' )}}"
@@ -132,92 +133,31 @@
                                                             <a data-toggle="modal"
                                                                data-target="#replyToRequest/{{$request->id}}"
                                                                class="btn btn-success confirm-btn">Confirm</a>
-                                                            <a class="btn btn-danger deny-btn">Deny</a>
+
+                                                            <a data-toggle="modal"
+                                                               data-target="#deletModal/{{$request->id}}" class="btn btn-danger deny-btn">Delete</a>
                                                         </div>
                                                     </div>
-                                                    <!------------------------- Modal ------------------------>
-                                                    <div class="modal fade" id="replyToRequest/{{$request->id}}"
-                                                         tabindex="-1" role="dialog"
-                                                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+                                                    @include('influencers.send-information-modal')
+                                                    <!-- Delete Notification Modal -->
+                                                    <div class="modal fade" id="deletModal/{{$request->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                                             <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLongTitle">
-                                                                        <span class="notification-sender">{{$request->business->first_name}} {{$request->business->last_name}}</span>
-                                                                        is asking about the price of your
-                                                                        <span class="notification-platform">{{$request->platform}}</span>
-                                                                        promotion prices:</h5>
-                                                                    <button type="button" class="close" data-dismiss="modal"
-                                                                            aria-label="Close">
+                                                                <div class="modal-header delete-modal">
+                                                                    <h5 class="modal-title" id="exampleModalLongTitle">Are you sure you want to delete the request sent by {{$request->business->first_name}} {{$request->business->last_name}} ?</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                         <span aria-hidden="true">&times;</span>
                                                                     </button>
                                                                 </div>
+                                                                <div class="modal-footer">
+                                                                    <form action="{{route('delete-request')}}">
+                                                                        <input value="{{$request->id}}" name="request_id" hidden>
+                                                                        <button type="submit" class="btn btn-primary delete-modal-btn">Delete</button>
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                    </form>
 
-                                                                <form action="{{route('Send-Information')}}" method="GET">
-                                                                    @if($request->story == 1)
-                                                                        <div class="col-sm-6 story-section">
-                                                                            <div class="form-group">
-                                                                                <label class="story-label" for="exampleInputEmail1">Price per
-                                                                                    Story:</label>
-                                                                                <div class="input-group">
-                                                                                    <input class="form-control" min="1"
-                                                                                           type="number"
-                                                                                           name="story_price"/>
-                                                                                    <div class="input-group-append">
-                                                                                    <span
-                                                                                        class="input-group-text dollar-div">$</span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-
-                                                                    @endif
-                                                                    @if($request->post == 1)
-                                                                        <div class="col-sm-6 post-section">
-                                                                            <label class="post-label" style="display: inline-flex">Price per
-                                                                                Post:</label>
-                                                                            <div class="input-group">
-                                                                                <input class="form-control" min="1"
-                                                                                       type="number" class="switch-input"
-                                                                                       name="post_price"  value=""/>
-                                                                                <div class="input-group-append">
-                                                                                    <span class="input-group-text dollar-div">$</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-
-                                                                    @endif
-                                                                    @if($request->other_questions != null)
-                                                                        <div class="col-sm-10 additional-questions-section">
-                                                                            <h1 class="additional-questions-label">{{$request->business->name}} additional
-                                                                                questions: </h1>
-                                                                            <h4 style="display: inline-flex">{{$request->other_questions}}</h4>
-                                                                        </div>
-                                                                        <br>
-                                                                    @endif
-                                                                    <div class="col-sm-10 additional-comments-section">
-                                                                        <h1 class="additional-comments-label" style="display: inline-flex">Any additional
-                                                                            comments:</h1>
-                                                                        <textarea value="other_comments"
-                                                                                  name="other_comments" class="form-control"
-                                                                                  id="exampleFormControlTextarea1"
-                                                                                  rows="3"></textarea>
-                                                                    </div>
-                                                                    <br>
-                                                                    <input value="{{$request->business_id}}"
-                                                                           name="business_id" hidden>
-                                                                    <input value="{{$request->influencer_id}}"
-                                                                           name="influencer_id" hidden>
-                                                                    <div class="modal-footer">
-                                                                        <button type="submit"
-                                                                                class="btn btn-primary request-confirmation">
-                                                                            Send
-                                                                        </button>
-                                                                        <button type="button" class="btn btn-secondary"
-                                                                                data-dismiss="modal">Close
-                                                                        </button>
-                                                                    </div>
-                                                                </form>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -229,51 +169,14 @@
 
                                     {{--    Slider   --}}
 
-                                    <div class="top-profiles">
-                                        <div class="pf-hd">
-                                            <h3>Top Profiles</h3>
-                                            <i class="la la-ellipsis-v"></i>
-                                        </div>
-                                        <div class="profiles-slider">
-                                            <div class="user-profy">
-                                                <img src="{{ URL::asset('assets/images/icons/user1.png') }}" alt="">
-                                                <h3>Hassan Ezz</h3>
-                                                <span>Web Developer</span>
-                                                <a href="#" title="">View Profile</a>
-                                            </div>
-                                            <div class="user-profy">
-                                                <img src="{{ URL::asset('assets/images/icons/user1.png') }}" alt="">
-                                                <h3>Hassan Ezz</h3>
-                                                <span>Web Developer</span>
-                                                <a href="#" title="">View Profile</a>
-                                            </div>
-                                            <div class="user-profy">
-                                                <img src="{{ URL::asset('assets/images/icons/user1.png') }}" alt="">
-                                                <h3>Hassan Ezz</h3>
-                                                <span>Web Developer</span>
-                                                <a href="#" title="">View Profile</a>
-                                            </div>
-                                            <div class="user-profy">
-                                                <img src="{{ URL::asset('assets/images/icons/user1.png') }}" alt="">
-                                                <h3>Hassan Ezz</h3>
-                                                <span>Web Developer</span>
-                                                <a href="#" title="">View Profile</a>
-                                            </div>
-                                            <div class="user-profy">
-                                                <img src="{{ URL::asset('assets/images/icons/user1.png') }}" alt="">
-                                                <h3>Hassan Ezz</h3>
-                                                <span>Web Developer</span>
-                                                <a href="#" title="">View Profile</a>
-                                            </div>
-                                            <div class="user-profy">
-                                                <img src="{{ URL::asset('assets/images/icons/user1.png') }}" alt="">
-                                                <h3>Hassan Ezz</h3>
-                                                <span>Web Developer</span>
-                                                <a href="#" title="">View Profile</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div></div></div></div></div></div></div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
 @endsection

@@ -81,7 +81,7 @@ class RegisterBusinessWizard extends Component
             'instagram_username' => $this->instagram_username,
         ]);
 //        event(new Registered($business));
-        Auth::login($business);
+        Auth::guard('business')->login($business);
         return redirect()->to(RouteServiceProvider::Business);
     }
 

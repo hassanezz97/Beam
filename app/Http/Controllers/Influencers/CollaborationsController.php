@@ -15,8 +15,9 @@ class CollaborationsController extends Controller
 
    public function index(){
        $ratings = Rating::where('influencer_id',Auth::user()->id)->avg('rating');
+       $requests = \App\Models\Request::where('influencer_id',Auth::user()->id)->get();
        $collaborations = Collaboration::where('influencer_id',Auth::user()->id)->where('is_accepted',1)->get();
-        return view('influencers.collaborations-influencer',compact('ratings','collaborations'));
+        return view('influencers.collaborations-influencer',compact('ratings','collaborations','requests'));
    }
 
    public function collaborateWithBusiness(Request $request){
@@ -28,8 +29,8 @@ class CollaborationsController extends Controller
        }
         $caption = $request->collaboration_caption;
         $c =Collaboration::create([
-           'collaboration_image' => $collaboration_image->getClientOriginalName(),
-           'description'=>$caption,
+            'collaboration_image' => $collaboration_image->getClientOriginalName(),
+            'description'=>$caption,
             'influencer_id'=>Auth::user()->id,
             'business_id'=>$business_id,
         ]);

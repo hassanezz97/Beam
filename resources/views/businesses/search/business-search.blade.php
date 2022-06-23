@@ -31,7 +31,7 @@
         </div>
     </form>
 </div>
-<div class="ads" id="card-row-business" >
+<div class="row" id="card-row-business" >
 
 </div>
 <!-- JQUERY FROM GOOGLE API -->

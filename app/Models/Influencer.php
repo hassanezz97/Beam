@@ -47,4 +47,8 @@ class Influencer extends Authenticatable
     {
         return $this->hasMany('App\Models\Collaboration');
     }
+    public function SocialProfile()
+    {
+        return $this->hasOne('App\Models\SocialProfilesInfluencer','SocialProfilesInfluencer_id');
+    }
 }

@@ -428,21 +428,7 @@
 
                                     </div>
 
-                                    <div class="col-sm-6">
-                                        <label>
-                                            <span class="fa fa-chart-bar"></span>
-                                            Instagram Stats
-                                        </label>
-                                        <br>
 
-                                        <button class="btn btn-default btn-disabled" disabled>Connect Instagram First to Enable Stats</button>
-                                        <span class="help-block">
-                                            Connecting with the stats API keeps your
-                                            engagement rate up to date
-                                              and enables you to apply to campaigns.
-                                          </span>
-
-                                    </div>
                                 </div>
                             </div>
                         </article>
@@ -455,26 +441,10 @@
                             </h4>
 
                             <div class="panel-body">
-                                <form class="edit_account" id="edit_account_6211589751d0aa56f86fa18e" data-remote="true" action="/influencers/6211589751d0aa56f86fa18e" accept-charset="UTF-8" method="post"><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="PGvT8/6lm3KT2q8yfxm1qzGrcBMy6c5XvKQzbPuZVwCbkqMpis9iahJADMF4Z9VifNcTJmfzBSb06nlp0DiZqQ==" />
-                                    <input type="hidden" name="partial" id="partial" value="edit_social_profiles" />
-
+                                <form class="edit_account" action="{{route('edit-profile.edit','edit')}}" method="get">
                                     <h5>Show off your reach by connecting your social networks</h5>
+                                    <br>
                                     <div class="row flex-display flex-wrap flex-align-top flex-children-grow">
-
-                                        <div class="col-md-4">
-                                            <article class="white-content-block" id="connect-youtube">
-                                                <h4 class="panel-title">
-                                                    <label>
-                                                        <span class="fa fa-youtube"></span>
-                                                        YouTube
-                                                    </label>
-                                                </h4>
-                                                <div class="panel-body">
-                                                    <a class="btn btn-block social-btn" data-method="post" href="/users/auth/youtube">Connect YouTube</a>
-                                                </div>
-                                            </article>
-                                        </div>
-
                                         <div class="col-md-4">
                                             <article class="white-content-block" id="connect-tiktok">
                                                 <h4 class="panel-title">
@@ -483,8 +453,13 @@
                                                     </label>
                                                 </h4>
                                                 <div class="panel-body">
-                                                    <a class="btn btn-block social-btn" data-method="post" href="/users/auth/tiktok">Connect TikTok</a>
-                                                </div>
+                                                    @if($socialprofile)
+
+                                                        <input placeholder="username" value="{{$socialprofile->tiktok}}"  class="form-control" type="text" name="tiktok" />
+                                                    @else
+                                                        <input placeholder="username" class="form-control" type="text" name="tiktok" />
+                                                    @endif
+                                                    </div>
                                             </article>
                                         </div>
 
@@ -498,15 +473,17 @@
                                                     </label>
                                                 </h4>
                                                 <div class="panel-body">
-                                                    <a data-method="post" class="btn btn-block social-btn" href="/users/auth/twitter">Connect Twitter</a>
-                                                </div>
+                                                    @if($socialprofile)
+                                                        <input placeholder="username"  value="{{$socialprofile->twitter}}"  class="form-control" type="text" name="twitter" />
+
+                                                    @else
+                                                        <input placeholder="username"  class="form-control" type="text" name="twitter" />
+
+                                                    @endif
+                                                    </div>
                                             </article>
                                         </div>
-
-
-
                                         <div class="col-md-4">
-
                                             <article class="white-content-block" id="connect-facebook">
                                                 <h4 class="panel-title">
                                                     <label>
@@ -515,95 +492,31 @@
                                                     </label>
                                                 </h4>
                                                 <div class="panel-body">
-                                                    <a class="btn btn-block social-btn" data-method="post" href="/users/auth/facebook">Connect Facebook</a>
-                                                </div>
-                                            </article>
-                                        </div>
-                                    </div>
+                                                    @if($socialprofile)
+                                                        <input placeholder="username"  value="{{$socialprofile->facebook}}"class="form-control" type="text" name="facebook" />
 
-                                    <hr>
-                                    <h5>Show off other profiles</h5>
+                                                    @else
+                                                        <input placeholder="username"  class="form-control" type="text" name="facebook" />
 
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <article class="white-content-block">
-                                                <h4 class="panel-title">
-                                                    <label for="account_snapchat_handle">
-                                                        <span class="fa fa-snapchat-ghost"></span>
-                                                        Snapchat Handle
-                                                    </label>
-                                                </h4>
-                                                <div class="panel-body">
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon">@</span>
-                                                        <input placeholder="e.g. [username]" class="form-control" type="text" name="account[snapchat_handle]" id="account_snapchat_handle" />
+                                                    @endif
                                                     </div>
-                                                </div>
-                                            </article>
-
-                                        </div>
-
-                                        <div class="col-md-4">
-                                            <article class="white-content-block">
-                                                <h4 class="panel-title">
-                                                    <label for="account_linkedin_url">
-                                                        <span class="fa fa-linkedin"></span>
-                                                        LinkedIn URL
-                                                    </label>
-                                                </h4>
-                                                <div class="panel-body">
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon"><i class="glyphicon glyphicon-link"></i></span>
-                                                        <input placeholder="e.g. https://linkedin.com/in/[username]" class="form-control" type="text" name="account[linkedin_url]" id="account_linkedin_url" />
-                                                    </div>
-                                                </div>
                                             </article>
                                         </div>
-
-                                        <article class="white-content-block">
-                                            <h4 class="panel-title">
-                                                <label for="account_clubhouse_url">
-                                                    <span class="fa fa-hand-paper"></span>
-                                                    Clubhouse URL
-                                                </label>
-                                            </h4>
-                                            <div class="panel-body">
-
-                                                <div class="input-group">
-                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-link"></i></span>
-                                                    <input placeholder="e.g. https://www.joinclubhouse.com/[username]" class="form-control" type="text" name="account[clubhouse_url]" id="account_clubhouse_url" />
-                                                </div>
-                                            </div>
-                                        </article>
                                     </div>
                                     <div class="row">
                                         <div class="col-xs-12">
                                             <br>
                                             <p class="text-right">
-                                                <input type="submit" name="commit" value="Save" data-disable-with="One Moment..." class="btn btn-xs-block our-button" />
+                                                <button type="submit" class="btn btn-xs-block our-button" > Save </button>
                                             </p>
                                         </div>
                                     </div>
-                                </form>      </div>
+                                </form>
+                            </div>
                         </article>
                     </div>
 
-                    <article id="edit_account_type" class="white-content-block">
-                        <h4 class="panel-title">Account Type &nbsp;&nbsp;<span class="glyphicon glyphicon-ok color-green" aria-hidden="true"></span></h4>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <p>
-                                        Your account is currently set to <code>Influencer</code>.
-                                    </p>
 
-                                    <p>
-                                        <a data-method="put" class="btn btn-xs-block our-button" href="/influencers/6211589751d0aa56f86fa18e?account%5Baccount_type%5D=personal">Switch to Personal</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
                 </div>
             </section>
         </div>

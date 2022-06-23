@@ -30,10 +30,13 @@
             </div>
         </form>
 </div>
+<div class="row" id="card-row" >
 
-<div class="ads" id="card-row" >
+
 
 </div>
+
+
 <!-- JQUERY FROM GOOGLE API -->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 
@@ -49,6 +52,9 @@
         });
     });
 </script>
+
+
+
 
 
 
@@ -87,38 +93,8 @@
 {{--                @endif--}}
 
 {{--            @endif--}}
-{{--    <!--Profile card start-->--}}
 
-{{--    <!--Profile card end-->--}}
 
-{{--<script>--}}
-{{--    function search() {--}}
-{{--        var x = document.getElementById("card-row");--}}
-{{--        if (x.style.display === "none") {--}}
-{{--            x.style.display = "block";--}}
-{{--        }--}}
-{{--    }--}}
-{{--</script>--}}
-{{--            <div class="row">--}}
 
-{{--                <div class="col-md-6">--}}
-{{--                    <br>--}}
-{{--                    <label>Instagram Follower Count</label>--}}
-{{--                    <div class="follower-range noUi-target noUi-ltr noUi-horizontal noUi-background" data-min="5000" data-max="'10000000">--}}
-{{--                        <div class="noUi-base">--}}
-{{--                            <div class="noUi-origin noUi-connect" style="left:12.5%;">--}}
-{{--                                <div class="noUi-handle noUi-handle-lower">--}}
-{{--                                    <div class="noUi-tooltip">5,000</div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="noUi-origin noUi-background" style="left: 75%;" >--}}
-{{--                                <div class="noUi-handle noUi-handle-upper">--}}
-{{--                                    <div class="noUi-tooltip">1,000,000</div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="follower-range" data-min="5000" data-max="1000000"></div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
+
 

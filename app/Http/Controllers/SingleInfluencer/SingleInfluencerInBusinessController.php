@@ -5,6 +5,7 @@ namespace App\Http\Controllers\SingleInfluencer;
 use App\Http\Controllers\Controller;
 use App\Models\Collaboration;
 use App\Models\Influencer;
+use App\Models\SocialProfilesInfluencer;
 use Illuminate\Http\Request;
 use App\Notifications\requestsRecieved;
 use Illuminate\Support\Facades\Auth;
@@ -14,19 +15,18 @@ class SingleInfluencerInBusinessController extends Controller
 {
     public function index($name)
     {
-
+        $influencer_id =Influencer::where("name", $name)->get('id');
+        $socialprofile = SocialProfilesInfluencer::where('influencer_id',$influencer_id)->first();
         return view('businesses.single-influencer-in-business', [
             $influencer =Influencer::where("name", $name)->first(),
             $collaborations = Collaboration::where('influencer_id',$influencer->id)->where('is_accepted',1)->get(),
             $suggestions = Influencer::inRandomOrder()->limit(3)->get(),
-        ], compact('influencer','suggestions','collaborations'));
+        ], compact('influencer','suggestions','collaborations','socialprofile'));
     }
     public function sendRequest(Request $request){
         $influencer_id= $request->get('influencer_id');
         $business_id = $request->get('business_id');
         $platform = $request->get('platform');
-//        $story = $request->has('story');
-//        $post = $request->has('post');
         if($request->has('story')){
             $story = 1;
         }
@@ -49,7 +49,6 @@ class SingleInfluencerInBusinessController extends Controller
             'other_questions'=>$other_questions,
         ]);
         Notification::send($r->Influencer, new requestsRecieved($r));
-//        $r->Influencer->notfiy(new requestsRecieved());
         toastr()->success('Request is sent successfully!');
         return redirect()->back();
     }

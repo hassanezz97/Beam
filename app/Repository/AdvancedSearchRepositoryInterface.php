@@ -10,4 +10,5 @@ interface AdvancedSearchRepositoryInterface
 
     public function searchInfluencer(Request $request);
     public function searchBusiness(Request $request);
+    public function searchUsername(Request $request);
 }

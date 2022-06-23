@@ -118,7 +118,7 @@
 
                                     <div class="col-sm-8 col-md-5 text-center-xs">
                                         <p>
-                                            <span class="label label-default">BUSINESS</span>
+                                            <span class="label label-defaultbusiness-tag" style="background: #f27684">BUSINESS</span>
                                         </p>
 
                                         <br>
@@ -221,109 +221,89 @@
                             </article>
 
                             {{--------------------Suggestions -----------------}}
-                            <article id="edit_avatar" class="white-content-block">
-                                <h4 class="panel-title"> <i class="fa fa-address-card-o"></i>  Suggestions</h4>
-                                <div class="panel-body">
-                                    <h4 class="" name="account[bio]" id="account_bio" >
-                                        <ul>
+                            <div class="suggestions full-width" style="border-radius: 5px">
+                                <div class="sd-title">
+                                    <h5>Suggestions</h5>
 
-                                            {{--                                        <li class="social-links-list">--}}
-                                            {{--                                            <img src="{{ URL::asset('assets/images/icons/s1.png') }}" alt="">--}}
-                                            {{--                                            <div class="sgt-text">--}}
-                                            {{--                                                <h4>Salwa Ghaddar</h4>--}}
-                                            {{--                                                <span>Graphic Designer</span>--}}
-                                            {{--                                            </div>--}}
-                                            {{--                                            <span><i class="fa fa-eye" style="float: right;"></i></span>--}}
-                                            {{--                                        </li>--}}
-                                            {{--                                        <br><br>--}}
-                                            {{--                                        <hr>--}}
-                                            {{--                                        <li class="social-links-list">--}}
-                                            {{--                                            <img src="{{ URL::asset('assets/images/icons/s1.png') }}" alt="">--}}
-                                            {{--                                            <div class="sgt-text">--}}
-                                            {{--                                                <h4>Salwa Ghaddar</h4>--}}
-                                            {{--                                                <span>Graphic Designer</span>--}}
-                                            {{--                                            </div>--}}
-                                            {{--                                            <span><i class="fa fa-eye" style="float: right;"></i></span>--}}
-                                            {{--                                        </li>--}}
-                                            {{--                                        <br><br>--}}
-                                            {{--                                        <hr>--}}
-                                            {{--                                        <input type="hidden" name="id" value="{{Auth::user()->id}}" />--}}
-{{--                                            @foreach($influencers as $influencer)--}}
-{{--                                                @if($influencer->id != Auth::user()->id)--}}
-{{--                                                    <li class="social-links-list">--}}
-{{--                                                        <img width="35" height="35" style="border-radius: 100px" src="{{asset('storage/influencer_images/'.$influencer->name.'/'.$influencer->profile_picture.'' )}}" alt="">--}}
-{{--                                                        <div class="sgt-text">--}}
-{{--                                                            <h4>{{$influencer->name}}</h4>--}}
-{{--                                                            <span>{{$influencer->category->name}}</span>--}}
-{{--                                                        </div>--}}
-{{--                                                        <span>--}}
-{{--                                                       <a href="http://localhost:8000/en/influencer/{{$influencer->name}}"> <i class="fa fa-eye" style="float: right;"></i></a>--}}
-{{--                                                    </span>--}}
-{{--                                                    </li>--}}
-{{--                                                    <br><br>--}}
-{{--                                                    <hr>--}}
-{{--                                                @endif--}}
-{{--                                                --}}{{--                                            <option value="{{$influencer->id}}">{{$influencer->name}}</option>--}}
-
-{{--                                            @endforeach--}}
-
-                                        </ul>
-                                    </h4>
-                                    <br>
                                 </div>
-                            </article>
+                                <div class="suggestions-list">
+                                    @foreach($suggestions as $suggestion)
+                                        <div class="suggestion-usd">
+                                            <img style="width: 100%; height: 35px; width: 35px" src="{{asset('storage/influencer_images/'.$suggestion->name.'/'.$suggestion->profile_picture.'' )}}" alt="">
+                                            <div class="sgt-text">
+                                                <h4>{{$suggestion->full_name}}</h4>
+                                                <span>{{$suggestion->category->name}}</span>
+                                            </div>
+                                            <span><a href="{{route('singleInfluencerInBusiness',$suggestion->name)}}"><i class="fa fa-eye"></i></a></span>
+                                        </div>
+                                    @endforeach
+
+                                    <div class="view-more" style="border-top: 1px solid #e5e5e5">
+                                        <a href="#" title="">View More</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         {{-- ----------------- CollaborationsController --------------------------}}
                         <div class="col-md-9">
                             <article id="edit_categories" class="white-content-block">
                                 <h4 class="panel-title"><i class="fa fa-handshake-o"></i> Collaborations <span class="glyphicon glyphicon-ok color-green" aria-hidden="true"></span></h4>
-                                @foreach($collaborations as $collaboration)
-                                    <div class="panel-body" style="min-height: 300px;">
-                                        <div class="post_topbar">
-                                            <div class="usy-dt">
-                                                <img style="margin-top: -2px" width="40" height="40" src="{{asset('storage/influencer_images/'.$collaboration->influencer->name.'/'.$collaboration->influencer->profile_picture.'' )}}" alt="">
-                                                <img style="position: relative;bottom: 3px;right: 23px;" width="40" height="40" src="{{asset('storage/business_images/'.Auth::user()->name.'/'.Auth::user()->profile_picture.'' )}}" alt="">
-                                                <div class="usy-name">
-                                                    <h3>{{Auth::user()->name}}</h3>
-                                                    <span><i class="fa fa-clock"></i> {{$collaboration->created_at->diffForHumans()}}</span>
-                                                </div>
-                                                <div class="usy-name">
-                                                    <h3 style="font-weight: 400; font-size: 16px">collaborated with</h3>
-                                                </div>
-                                                <div class="usy-name">
+                                @if($collaborations->count()>0)
+                                    @foreach($collaborations as $collaboration)
+                                        <div class="panel-body" style="min-height: 300px;">
+                                            <div class="post_topbar">
+                                                <div class="usy-dt">
+                                                    <img style="margin-top: -2px" width="40" height="40" src="{{asset('storage/influencer_images/'.$collaboration->influencer->name.'/'.$collaboration->influencer->profile_picture.'' )}}" alt="">
+                                                    <img style="position: relative;bottom: 3px;right: 23px;" width="40" height="40" src="{{asset('storage/business_images/'.Auth::user()->name.'/'.Auth::user()->profile_picture.'' )}}" alt="">
                                                     <div class="usy-name">
-                                                        <a href="{{route('singleInfluencerInBusiness',$collaboration->influencer->name)}}"><h3 class="with-collaborator-name">{{$collaboration->influencer->name}}</h3></a>
+                                                        <h3>{{Auth::user()->name}}</h3>
+                                                        <span><i class="fa fa-clock"></i> {{$collaboration->created_at->diffForHumans()}}</span>
+                                                    </div>
+                                                    <div class="usy-name">
+                                                        <h3 style="font-weight: 400; font-size: 16px">collaborated with</h3>
+                                                    </div>
+                                                    <div class="usy-name">
+                                                        <div class="usy-name">
+                                                            <a href="{{route('singleInfluencerInBusiness',$collaboration->influencer->name)}}"><h3 class="with-collaborator-name">{{$collaboration->influencer->name}}</h3></a>
+                                                        </div>
                                                     </div>
                                                 </div>
+                                                <div class="ed-opts">
+                                                    <a  href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
+                                                    <ul class="ed-options">
+                                                        <li><a href="#" title="">Edit Post</a></li>
+                                                        <li><a href="#" title="">Unsaved</a></li>
+                                                        <li><a href="#" title="">Unbid</a></li>
+                                                        <li><a href="#" title="">Close</a></li>
+                                                        <li><a href="#" title="">Hide</a></li>
+                                                    </ul>
+                                                </div>
                                             </div>
-                                            <div class="ed-opts">
-                                                <a  href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
-                                                <ul class="ed-options">
-                                                    <li><a href="#" title="">Edit Post</a></li>
-                                                    <li><a href="#" title="">Unsaved</a></li>
-                                                    <li><a href="#" title="">Unbid</a></li>
-                                                    <li><a href="#" title="">Close</a></li>
-                                                    <li><a href="#" title="">Hide</a></li>
+                                            <div class="epi-sec">
+                                                <ul class="descp">
+                                                    <li><span><i class="fa fa-heart"></i> {{$collaboration->influencer->category->name}}</span></li>
+                                                    <li><span><i class="fa fa-globe"></i> {{$collaboration->influencer->country->name}}</span></li>
                                                 </ul>
-                                            </div>
-                                        </div>
-                                        <div class="epi-sec">
-                                            <ul class="descp">
-                                                <li><span><i class="fa fa-heart"></i> {{$collaboration->influencer->category->name}}</span></li>
-                                                <li><span><i class="fa fa-globe"></i> {{$collaboration->influencer->country->name}}</span></li>
-                                            </ul>
 
-                                        </div>
-                                        <div class="job_descp">
-                                            <div class=" w-50 ml-0 mr-0 mx-auto" >
-                                                <img style=" max-width:500px; max-height:450px" src="{{asset('storage/collaboration_images/'.$collaboration->influencer->name.'/'.$collaboration->collaboration_image.'' )}}">
+                                            </div>
+                                            <div class="job_descp">
+                                                <div class=" w-50 ml-0 mr-0 mx-auto" >
+                                                    <img style=" max-width:500px; max-height:450px" src="{{asset('storage/collaboration_images/'.$collaboration->influencer->name.'/'.$collaboration->collaboration_image.'' )}}">
+                                                </div>
+                                            </div>
+                                            <div class="collaboration-description">
+                                                <p>{{$collaboration->description}}</p>
                                             </div>
                                         </div>
-                                        <div class="collaboration-description">
-                                            <p>{{$collaboration->description}}</p>
+                                    @endforeach
+                                @else
+                                    <div class="panel-body" style="min-height: 100px;">
+                                        <div class="post_topbar">
+                                            <h1 style="text-align: center">No collaborations done yet</h1>
                                         </div>
                                     </div>
-                                @endforeach
+                                @endif
+
                             </article>
                         </div> </div>
 

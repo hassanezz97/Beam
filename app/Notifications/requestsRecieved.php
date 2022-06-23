@@ -56,6 +56,7 @@ class requestsRecieved extends Notification
     public function toArray($notifiable)
     {
         return [
+            "request_id"=>$this->r->id,
            "business" => $this->r->business->name,
            "profile_picture"=> $this->r->business->profile_picture ,
            "platform" => $this->r->platform,

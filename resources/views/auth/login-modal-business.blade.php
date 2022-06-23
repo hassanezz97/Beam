@@ -4,7 +4,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close d-flex align-items-center justify-content-center" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true" style="color: #80ACDC">x</span>
+                    <span aria-hidden="true" style="color: #f27684">x</span>
                 </button>
             </div>
             <div class="modal-body p-4 p-md-5">
@@ -32,7 +32,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="form-control btn btn-primary rounded submit px-3">Login</button>
+                        <button type="submit" class="form-control btn btn-primary rounded submit px-3" style="background: #f27684 !important; border-color: #f27684; color:white">Login</button>
                     </div>
                     <div class="form-group d-md-flex">
                         <div class="form-check w-50">

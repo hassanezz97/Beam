@@ -6,6 +6,24 @@
     Welcome {{Auth::user()->first_name}} {{Auth::user()->last_name}}
 @stop
 
+
+{{--<script src="https://js.pusher.com/7.1/pusher.min.js"></script>--}}
+{{--<script>--}}
+
+{{--    // Enable pusher logging - don't include this in production--}}
+{{--    Pusher.logToConsole = true;--}}
+
+{{--    var pusher = new Pusher('0119639d7cbfad31ea69', {--}}
+{{--        cluster: 'mt1'--}}
+{{--    });--}}
+
+{{--    var channel = pusher.subscribe('my-channel');--}}
+{{--    channel.bind('my-event', function(data) {--}}
+{{--        alert(JSON.stringify(data));--}}
+{{--    });--}}
+{{--</script>--}}
+{{--<script src="{{URL::asset('js/notifications/infromationRecieved.js')}}"></script>--}}
+
 <link rel="stylesheet" media="all" href="{{ URL::asset('css/influencers/notifications/notifications.css') }}" />
 @endsection
 
@@ -85,139 +103,102 @@
                                             <h3>Latest Notifications Recieved</h3>
                                         </div>
                                         <div class="job-status-bar">
-{{--                                            <div class="nott-list">--}}
-{{--                                                @foreach($informations as $information)--}}
-{{--                                                    <div class="notfication-details">--}}
-{{--                                                        <div class="noty-user-img">--}}
-{{--                                                            <img style="border-radius: 100px"--}}
-{{--                                                                 src="{{asset('storage/influencer_images/'.$information->influencer->name.'/'.$information->influencer->profile_picture.'' )}}"--}}
-{{--                                                                 alt="">--}}
-{{--                                                        </div>--}}
-{{--                                                        <div class="notification-info">--}}
-{{--                                                            <h3><a href="{{route('singleInfluencerInBusiness',$information->influencer->name)}}"--}}
-{{--                                                                   title="">{{$information->influencer->full_name}}</a>--}}
-{{--                                                                Replied to your information request.</h3>--}}
-{{--                                                            <span>{{$information->created_at->diffForHumans()}}</span>--}}
-{{--                                                        </div>--}}
-{{--                                                        <br><br>--}}
-{{--                                                        <div class="confirm-buttons">--}}
-{{--                                                            <a data-toggle="modal"--}}
-{{--                                                               data-target="#viewInformationModal/{{$information->id}}"--}}
-{{--                                                               class="btn btn-success view-info-btn">View Information</a>--}}
-{{--                                                            <a class="btn btn-danger deny-btn">Deny</a>--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-{{--                                                    <!------------------------- Modal ------------------------>--}}
-{{--                                                    <div class="modal fade" id="viewInformationModal/{{$information->id}}"--}}
-{{--                                                         tabindex="-1" role="dialog"--}}
-{{--                                                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">--}}
-{{--                                                        <div class="modal-dialog modal-dialog-centered" role="document">--}}
-{{--                                                            <div class="modal-content">--}}
-{{--                                                                <div class="modal-header" style="background-color: #A9DBE9" id="view-information-modal-header">--}}
-{{--                                                                    <h5 class="modal-title" id="exampleModalLongTitle"><span--}}
-{{--                                                                            style="color:#F5937A">{{$information->influencer->full_name}}</span>--}}
-{{--                                                                        has replied to your information request: </h5>--}}
-{{--                                                                    <button type="button" class="close" data-dismiss="modal"--}}
-{{--                                                                            aria-label="Close">--}}
-{{--                                                                        <span aria-hidden="true">&times;</span>--}}
-{{--                                                                    </button>--}}
-{{--                                                                </div>--}}
-{{--                                                                <div class="modal-body">--}}
-{{--                                                                    @if($information->story_price != null)--}}
-{{--                                                                        <div class="col-sm-6 story-section">--}}
-{{--                                                                            <div class="form-group">--}}
-{{--                                                                                <label class="story-label" for="exampleInputEmail1">Story Price:</label>--}}
-{{--                                                                                <div class="input-group">--}}
-{{--                                                                                    <input class="form-control" value="{{$information->story_price}}"--}}
-{{--                                                                                           type="number"--}}
-{{--                                                                                           name="story_price" disabled/>--}}
-{{--                                                                                    <div class="input-group-append">--}}
-{{--                                                                                    <span class="input-group-text dollar-div-view-information">$</span>--}}
-{{--                                                                                    </div>--}}
-{{--                                                                                </div>--}}
-{{--                                                                            </div>--}}
-{{--                                                                        </div>--}}
-{{--                                                                        @endif--}}
-{{--                                                                    @if($information->post_price != null)--}}
-{{--                                                                            <div class="col-sm-6 post-section">--}}
-{{--                                                                                <label class="post-label" style="display: inline-flex">Post Price:</label>--}}
-{{--                                                                                <div class="input-group">--}}
-{{--                                                                                    <input class="form-control" min="1"--}}
-{{--                                                                                           type="number" class="switch-input"--}}
-{{--                                                                                           name="post_price" disabled  value="{{$information->post_price}}"/>--}}
-{{--                                                                                    <div class="input-group-append">--}}
-{{--                                                                                        <span class="input-group-text dollar-div-view-information">$</span>--}}
-{{--                                                                                    </div>--}}
-{{--                                                                                </div>--}}
-{{--                                                                            </div>--}}
-{{--                                                                     @endif--}}
-{{--                                                                     @if($information->other_comments != null)--}}
-{{--                                                                            <div class="col-sm-10 additional-comments-section">--}}
-{{--                                                                                <h1 class="additional-comments-label" style="display: inline-flex">Comments:</h1>--}}
-{{--                                                                                <textarea value="other_comments"--}}
-{{--                                                                                          name="other_comments" class="form-control"--}}
-{{--                                                                                          id="exampleFormControlTextarea1"--}}
-{{--                                                                                          rows="3" disabled>{{$information->other_comments}}</textarea>--}}
-{{--                                                                            </div>--}}
+                                            <div class="nott-list">
+                                                @foreach($informations as $information)
+                                                    <div class="notfication-details">
+                                                        <div class="noty-user-img">
+                                                            <img style="border-radius: 100px"
+                                                                 src="{{asset('storage/influencer_images/'.$information->influencer->name.'/'.$information->influencer->profile_picture.'' )}}"
+                                                                 alt="">
+                                                        </div>
+                                                        <div class="notification-info">
+                                                            <h3><a href="{{route('singleInfluencerInBusiness',$information->influencer->name)}}"
+                                                                   title="">{{$information->influencer->full_name}}</a>
+                                                                Replied to your information request.</h3>
+                                                            <span>{{$information->created_at->diffForHumans()}}</span>
+                                                        </div>
+                                                        <br><br>
+                                                        <div class="confirm-buttons">
+                                                            <a data-toggle="modal"
+                                                               data-target="#viewInformationModal/{{$information->id}}"
+                                                               class="btn btn-success view-info-btn">View Information</a>
+                                                        </div>
+                                                    </div>
+                                                    <!------------------------- viewInformationModal ------------------------>
+                                                    <div class="modal fade" id="viewInformationModal/{{$information->id}}"
+                                                         tabindex="-1" role="dialog"
+                                                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header" style="background-color: #A9DBE9" id="view-information-modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLongTitle"><span
+                                                                            style="color:#F5937A">{{$information->influencer->full_name}}</span>
+                                                                        has replied to your information request: </h5>
+                                                                    <button type="button" class="close" data-dismiss="modal"
+                                                                            aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    @if($information->story_price != null)
+                                                                        <div class="col-sm-6 story-section">
+                                                                            <div class="form-group">
+                                                                                <label class="story-label" for="exampleInputEmail1">Story Price:</label>
+                                                                                <div class="input-group">
+                                                                                    <input class="form-control" value="{{$information->story_price}}"
+                                                                                           type="number"
+                                                                                           name="story_price" disabled/>
+                                                                                    <div class="input-group-append">
+                                                                                    <span class="input-group-text dollar-div-view-information">$</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        @endif
+                                                                    @if($information->post_price != null)
+                                                                            <div class="col-sm-6 post-section">
+                                                                                <label class="post-label" style="display: inline-flex">Post Price:</label>
+                                                                                <div class="input-group">
+                                                                                    <input class="form-control" min="1"
+                                                                                           type="number" class="switch-input"
+                                                                                           name="post_price" disabled  value="{{$information->post_price}}"/>
+                                                                                    <div class="input-group-append">
+                                                                                        <span class="input-group-text dollar-div-view-information">$</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                     @endif
+                                                                     @if($information->other_comments != null)
+                                                                            <div class="col-sm-10 additional-comments-section">
+                                                                                <h1 class="additional-comments-label" style="display: inline-flex">Comments:</h1>
+                                                                                <textarea value="other_comments"
+                                                                                          name="other_comments" class="form-control"
+                                                                                          id="exampleFormControlTextarea1"
+                                                                                          rows="3" disabled>{{$information->other_comments}}</textarea>
+                                                                            </div>
 
-{{--                                                                     @endif--}}
+                                                                     @endif
 
-{{--                                                                </div>--}}
+                                                                </div>
 
 
-{{--                                                                    <div class="modal-footer">--}}
+                                                                    <div class="modal-footer">
 
-{{--                                                                        <button type="button" class="btn btn-secondary close-info-modal"--}}
-{{--                                                                                data-dismiss="modal">Close--}}
-{{--                                                                        </button>--}}
-{{--                                                                    </div>--}}
+                                                                        <button type="button" class="btn btn-secondary close-info-modal"
+                                                                                data-dismiss="modal">Close
+                                                                        </button>
+                                                                    </div>
 
-{{--                                                            </div>--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-{{--                                                @endforeach--}}
-{{--                                            </div>--}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-{{--                            @include('businesses.accept-collaboration-modal')--}}
-                            {{--    Slider   --}}
-
-                            <div class="top-profiles">
-                                <div class="pf-hd">
-                                    <h3>Top Profiles</h3>
-                                    <i class="la la-ellipsis-v"></i>
-                                </div>
-                                <div class="profiles-slider">
-                                    <div class="user-profy">
-                                        <img src="{{ URL::asset('assets/images/icons/user1.png') }}" alt="">
-                                        <h3>Hassan Ezz</h3>
-                                        <span>Web Developer</span>
-                                        <a href="#" title="">View Profile</a>
-                                    </div>
-
-
-                                    <div class="user-profy">
-                                        <img src="{{ URL::asset('assets/images/icons/user1.png') }}" alt="">
-                                        <h3>Hassan Ezz</h3>
-                                        <span>Web Developer</span>
-                                        <a href="#" title="">View Profile</a>
-                                    </div>
-                                    <div class="user-profy">
-                                        <img src="{{ URL::asset('assets/images/icons/user1.png') }}" alt="">
-                                        <h3>Hassan Ezz</h3>
-                                        <span>Web Developer</span>
-                                        <a href="#" title="">View Profile</a>
-                                    </div>
-                                    <div class="user-profy">
-                                        <img src="{{ URL::asset('assets/images/icons/user1.png') }}" alt="">
-                                        <h3>Hassan Ezz</h3>
-                                        <span>Web Developer</span>
-                                        <a href="#" title="">View Profile</a>
-                                    </div>
-                                </div>
-                            </div>
+                            @include('businesses.accept-collaboration-modal')
                         </div>
                     </div>
                 </div>

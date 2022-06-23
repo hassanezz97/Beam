@@ -24,23 +24,21 @@ class InfluencerProfileController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store()
     {
-        //
+
     }
 
 
     public function show($id)
     {
-        //
+
     }
 
 
-    public function edit($id)
+    public function edit(Request $request)
     {
-//        return $this->Influencer->editInfluencerBasicInfo($id);
-
-//        return view('influencers.edit-profile-influencer',compact('Influencer'));
+        return $this->Influencer->addSocialProfiles($request);
     }
 
 

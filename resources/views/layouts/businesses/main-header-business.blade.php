@@ -9,12 +9,12 @@ header start-->
     <div class="container">
         <div class="header-data">
 
-            <div class="search-bar">
-                <form>
-                    <input type="text" name="search" placeholder="Search...">
-                    <button type="submit"><i class="fa fa-search"></i></button>
-                </form>
-            </div>
+{{--            <div class="search-bar">--}}
+{{--                <form>--}}
+{{--                    <input type="text" name="search" placeholder="Search...">--}}
+{{--                    <button type="submit"><i class="fa fa-search"></i></button>--}}
+{{--                </form>--}}
+{{--            </div>--}}
             <nav>
                 <ul>
                     <li>

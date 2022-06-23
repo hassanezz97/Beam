@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 @section('title')
@@ -28,7 +29,7 @@
 <div class="wrapper">
     <div class="body-intro">
         <br><br><br>
-        <h1 class="body-title">
+        <h1 class="body-title" style="line-height: 59px; font-family: Georgia;">
             <b>
                 We Grow <br>Your Beam
             </b>
@@ -36,11 +37,10 @@
         </h1>
         <br>
         <h6 class="body-desc">
-            <b>
+
                 {{trans('homepage-inf.body-desc1')}}<br>
                 <span> {{trans('homepage-inf.body-desc2')}}</span><br>
                 {{trans('homepage-inf.body-desc3')}}
-            </b>
 
         </h6>
         <br>

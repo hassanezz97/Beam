@@ -9,12 +9,12 @@ header start-->
     <div class="container">
         <div class="header-data">
 
-            <div class="search-bar">
-                <form>
-                    <input type="text" name="search" placeholder="Search...">
-                    <button type="submit"><i class="fa fa-search"></i></button>
-                </form>
-            </div>
+{{--            <div class="search-bar">--}}
+{{--                <form>--}}
+{{--                    <input type="text" name="search" placeholder="Search...">--}}
+{{--                    <button type="submit"><i class="fa fa-search"></i></button>--}}
+{{--                </form>--}}
+{{--            </div>--}}
             <nav>
                 <ul>
                     <li>
@@ -77,7 +77,7 @@ header start-->
                                             <span style="font-size: 10px">{{$notification->created_at->diffForHumans()}}</span>
 
                                                 <a data-toggle="modal"
-                                                   data-target="#replyToRequest/{{$notification->id}}"
+                                                   data-target="#replyToRequest/{{$notification->data['request_id']}}"
                                                    class="btn btn-success confirm-btn">Confirm</a>
                                                 <a class="btn btn-danger deny-btn">Deny</a>
                                         </div>
@@ -152,8 +152,8 @@ header start-->
 
 {{--                            @csrf--}}
 {{--                        </form>--}}
-                        @if(auth('business')->check())
-                            <form id="logout-form" method="GET" action="{{ route('logout','business') }}">
+                        @if(auth('influencer')->check())
+                            <form id="logout-form" method="GET" action="{{ route('logout','influencer') }}">
                                   @else
                                     <form id="logout-form" method="GET" action="{{ route('logout','web') }}">
                                         @endif

@@ -2,6 +2,7 @@
 {{--<input value="{{Auth::user()->id}}" wire:name="business_id" hidden>--}}
 
     <form  wire:submit.prevent="rate()" >
+
         <div style="float: left">
 
        <input  class="star star-5" wire:model="rating" value="5" id="star-5" type="radio" name="star"/>
@@ -17,5 +18,6 @@
         </div>
         <button type="submit" class="rate-influencer-btn" style="padding:1px 20px 1px 20px; margin-top: 1px">Rate</button>
     </form>
+
 
 </div>

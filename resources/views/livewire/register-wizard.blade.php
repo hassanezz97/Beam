@@ -55,6 +55,8 @@
                 </div>
             </div>
             <div class="bs-stepper-content">
+
+
                 <form >
                     <!-- Account Details -->
                     @include('auth.registration-steps-influencer.account-details-s1')

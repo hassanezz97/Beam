@@ -21,6 +21,7 @@ class CollaborationBusinessController extends Controller
         $collaboration->is_accepted = 1;
         $collaboration->save();
         Notification::send($collaboration->Influencer, new CollaborationAnswer($collaboration));
-
+        toastr()->success("Collaboration Request Accepted Successfully ");
+        return redirect()->back();
     }
 }

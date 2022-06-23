@@ -27,7 +27,7 @@ class RequestCollaborations extends Component
             $collaboration_image->storeAs(Auth::user()->name, $collaboration_image->getClientOriginalName(), $disk = 'collaboration_images');
         }
         $this->validate([
-            'collaboration_image' => 'image|max:3024', // 1MB Max
+            'collaboration_image' => 'image|max:3024', // 2MB Max
         ]);
         $c = new Collaboration;
         $c->collaboration_image = $collaboration_image->getClientOriginalName();

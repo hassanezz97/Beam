@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<title>
+    Register as Influencer
+</title>
 <head>
 
     @livewireStyles

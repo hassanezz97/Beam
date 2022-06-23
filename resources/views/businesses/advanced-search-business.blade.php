@@ -37,6 +37,7 @@
                             <div id="Beirut" class="tabcontent" style="display: none;">
                                 @include('businesses.search.username-search')
                             </div>
+                            @include('businesses.view-information-modal')
 
                             <!-- Nav tabs -->
                             {{--                        <ul class="nav nav-tabs search-tabs responsive" role="tablist">--}}

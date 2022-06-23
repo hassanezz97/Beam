@@ -44,13 +44,13 @@ Route::group(
 //    Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
 });
-Auth::routes();
+//Auth::routes();
 //////////////////////////// Home pages ///////////////////////////
 Route::get('/', 'HomeController@home')->middleware('guest')->name('influencer');
 
 
 
-Route::get('/influencer/register', 'HomeController@registerInfluencer')->name('register-inf');
+Route::get('/influencer/register', 'HomeController@registerInfluencer')->middleware('guest')->name('register-inf');
 // authentication
 
 Route::group(['namespace' => 'Auth'], function () {

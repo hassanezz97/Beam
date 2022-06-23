@@ -1,5 +1,6 @@
 <!-- Title -->
 <title>@yield("title")</title>
+@livewireStyles
 <style>
     .bs-stepper .step.crossed .step-trigger .bs-stepper-circle {
         background-color: rgba(105,108,255,.16)!important;
